@@ -1,10 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Bienvenue sur mon Portfolio !</h1>
-    <p>Site en construction hébergé sur GitHub Pages.</p>
+
+    <nav class="sidebar">
+        <div class="logo">
+            <span>///</span> Portfolio
+        </div>
+        <div class="nav-links">
+            <a href="#moi">👤 Moi</a>
+            <a href="#competences">⚡ Compétences</a>
+            <a href="#apprentissage">🎓 Apprentissage</a>
+            <a href="#projets">🚀 Mes Projets</a>
+            <a href="#autres">✨ Autres</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <section id="moi">
+            <div class="profile-header">
+                <div class="avatar-placeholder">
+                    </div>
+                <div>
+                    <h4>PROFIL</h4>
+                    <h1 style="font-size: 4rem; margin: 10px 0;">Votre Prénom</h1>
+                    <p style="color: #b3b3b3;">Développeur Web • Créatif • Passionné</p>
+                </div>
+            </div>
+            <div style="margin-top: 30px; max-width: 800px; color: #b3b3b3; line-height: 1.6;">
+                <p>
+                    [ESPACE TEXTE : Écrivez ici votre présentation. Qui êtes-vous ? Que cherchez-vous ?]
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                </p>
+            </div>
+        </section>
+
+        <section id="competences">
+            <h2>Mes Compétences</h2>
+            <div class="grid-container">
+                
+                <div class="card">
+                    <div class="card-img-placeholder" style="background: #E34F26;"></div> <h3>HTML / CSS</h3>
+                    <p>Niveau Avancé</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-placeholder" style="background: #F7DF1E;"></div> <h3>JavaScript</h3>
+                    <p>Niveau Intermédiaire</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-placeholder" style="background: #777;"></div>
+                    <h3>Outils / Git</h3>
+                    <p>Utilisation quotidienne</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="apprentissage">
+            <h2>Apprentissage Critique</h2>
+            <p style="color:#b3b3b3; margin-bottom: 20px;">Cliquez sur une année pour voir les détails (Playlist)</p>
+
+            <details open> <summary>Année 2025</summary>
+                <div class="year-content">
+                    <ul>
+                        <li><strong>Projet X :</strong> Ce que j'ai appris sur la gestion de base de données...</li>
+                        <li><strong>Stage :</strong> Découverte du travail en équipe agile...</li>
+                        <li><strong>Cours :</strong> Algorithmique avancée...</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Année 2024</summary>
+                <div class="year-content">
+                    <p>[ESPACE TEXTE] Contenu de l'année 2024...</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Année 2023</summary>
+                <div class="year-content">
+                    <p>[ESPACE TEXTE] Contenu de l'année 2023...</p>
+                </div>
+            </details>
+
+        </section>
+
+        <section id="projets">
+            <h2>Mes Projets</h2>
+            <div class="grid-container">
+
+                <a href="#" class="card"> <div class="card-img-placeholder">
+                        </div>
+                    <h3>Nom du Projet</h3>
+                    <p>Description courte (2024)</p>
+                </a>
+
+                <a href="#" class="card">
+                    <div class="card-img-placeholder"></div>
+                    <h3>Autre Projet</h3>
+                    <p>Description courte (2023)</p>
+                </a>
+
+                <div class="card" style="opacity: 0.5; border: 2px dashed #333;">
+                    <div class="card-img-placeholder" style="background:transparent;"></div>
+                    <h3>À venir</h3>
+                    <p>Prochainement...</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="autres">
+            <h2>Autres / Contact</h2>
+            <div style="background-color: #181818; padding: 20px; border-radius: 8px;">
+                <p>
+                    [ESPACE TEXTE] Vous pouvez mettre ici vos hobbies, liens réseaux sociaux, ou formulaire de contact.
+                </p>
+                <br>
+                <a href="mailto:votre@email.com" style="color: white; text-decoration: underline;">Me contacter</a>
+            </div>
+        </section>
+
+        <footer style="margin-top: 50px; padding-bottom: 50px; color: #555; text-align: center; font-size: 12px;">
+            &copy; 2025 - Hébergé sur GitHub Pages
+        </footer>
+
+    </main>
 </body>
 </html>
