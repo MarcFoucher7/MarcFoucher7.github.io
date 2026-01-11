@@ -1,8 +1,8 @@
 /* =========================================
-   VARIABLES CSS & THEMES
+   1. VARIABLES & THEMES
    ========================================= */
 :root {
-    /* --- THEME SOMBRE PAR DEFAUT (Style Spotify) --- */
+    /* --- THEME SOMBRE (Défaut) --- */
     --bg-main: #121212;
     --sidebar-bg: #000000;
     --card-bg: #181818;
@@ -13,9 +13,10 @@
     --border-color: #333333;
     --card-shadow: none;
     --details-content-bg: #181818;
+    --sidebar-width: 240px;
 }
 
-/* --- THEME CLAIR (S'active via JS) --- */
+/* --- THEME CLAIR --- */
 body.light-theme {
     --bg-main: #F4F6F8;
     --sidebar-bg: #FFFFFF;
@@ -23,16 +24,19 @@ body.light-theme {
     --card-hover: #F0F2F5;
     --text-main: #1A1A1A;
     --text-muted: #666666;
-    /* On garde le même vert pour l'identité visuelle */
     --border-color: #E0E0E0;
     --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
     --details-content-bg: #FAFAFA;
 }
 
 /* =========================================
-   STYLES GENERAUX
+   2. BASES & RESET
    ========================================= */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -43,17 +47,42 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* --- SIDEBAR --- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+section {
+    margin-bottom: 60px;
+    scroll-margin-top: 80px; /* Marge pour l'ancrage */
+}
+
+a { text-decoration: none; }
+
+/* =========================================
+   3. LAYOUT (SIDEBAR & MAIN)
+   ========================================= */
 .sidebar {
-    width: 240px;
+    width: var(--sidebar-width);
     background-color: var(--sidebar-bg);
     padding: 24px;
     position: fixed;
-    height: 100%;
+    height: 100vh; /* Prend toute la hauteur */
+    overflow-y: auto; /* Scroll si le menu est trop long */
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--border-color);
-    z-index: 10;
+    z-index: 100;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -65,95 +94,163 @@ body {
 }
 .logo span { color: var(--accent); }
 
+.nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
 .nav-links a {
-    display: flex; align-items: center; gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: var(--text-muted);
-    text-decoration: none;
     padding: 10px 12px;
     font-weight: 600;
     transition: 0.2s;
     border-radius: 6px;
 }
-.nav-links a:hover { color: var(--text-main); background-color: var(--card-hover); }
+.nav-links a:hover {
+    color: var(--text-main);
+    background-color: var(--card-hover);
+}
 
-/* --- MAIN CONTENT --- */
 .main-content {
-    margin-left: 240px;
+    margin-left: var(--sidebar-width);
     padding: 40px 50px;
     flex-grow: 1;
+    width: calc(100% - var(--sidebar-width)); /* Largeur restante */
     transition: background-color 0.3s ease;
 }
 
-section { margin-bottom: 60px; scroll-margin-top: 20px; }
+/* =========================================
+   4. COMPOSANTS
+   ========================================= */
 
-h2 {
-    font-size: 26px; margin-bottom: 24px; color: var(--text-main);
-    border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
-}
-
-/* --- COMPONENTS --- */
+/* --- PROFIL HEADER --- */
 .profile-header {
-    display: flex; align-items: center; gap: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
     background-color: var(--card-bg);
-    padding: 30px; border-radius: 12px;
+    padding: 30px;
+    border-radius: 12px;
     box-shadow: var(--card-shadow);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-.avatar-placeholder {
-    width: 150px; height: 150px; background-color: var(--card-hover);
-    border-radius: 50%; flex-shrink: 0;
+    transition: background-color 0.3s ease;
 }
 
+.avatar-placeholder, .avatar-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.avatar-img {
+    object-fit: cover;
+    border: 3px solid var(--accent);
+}
+
+/* --- GRILLES & CARDS --- */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 24px;
 }
 
 .card {
     background-color: var(--card-bg);
-    padding: 16px; border-radius: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer; text-decoration: none;
-    color: var(--text-main); display: block;
+    padding: 16px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    color: var(--text-main);
+    display: block;
     box-shadow: var(--card-shadow);
     border: 1px solid transparent;
+    height: 100%; /* Uniformise la hauteur */
 }
 .card:hover {
     background-color: var(--card-hover);
     transform: translateY(-4px);
 }
-.card-img-placeholder {
+.card h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+/* Images Projets */
+.project-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+/* Icônes Compétences */
+.icon-box {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--card-hover);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+.card-img-placeholder { /* Fallback pour dossier.html */
     width: 100%; aspect-ratio: 1/1; background-color: var(--card-hover);
     border-radius: 6px; margin-bottom: 16px;
 }
-.card h3 { font-size: 17px; margin-bottom: 6px; font-weight: 700; }
 
+/* --- DETAILS (ACCORDÉONS) --- */
 details {
-    background-color: var(--card-bg); margin-bottom: 12px;
-    border-radius: 8px; overflow: hidden;
+    background-color: var(--card-bg);
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease;
 }
 details summary {
-    padding: 18px; cursor: pointer; font-weight: 600;
-    list-style: none; display: flex; justify-content: space-between; color: var(--text-main);
+    padding: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-main);
 }
-details summary:hover { background-color: var(--card-hover); color: var(--accent); }
-details summary::after { content: '+'; font-size: 20px; color: var(--text-muted); }
+details summary:hover {
+    background-color: var(--card-hover);
+    color: var(--accent);
+}
+details summary::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--text-muted);
+}
 details[open] summary::after { content: '-'; }
+
 .year-content {
-    padding: 20px; border-top: 1px solid var(--border-color);
-    color: var(--text-muted); background-color: var(--details-content-bg);
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    background-color: var(--details-content-bg);
     line-height: 1.6;
 }
 
-img { max-width: 100%; height: auto; display: block; border-radius: inherit;}
-
-
 /* =========================================
-   LE BOUTON SLIDER (SWITCH THEME)
+   5. SWITCH (THEME & LANGUE)
    ========================================= */
 .theme-switch-wrapper {
     display: flex;
@@ -169,20 +266,18 @@ img { max-width: 100%; height: auto; display: block; border-radius: inherit;}
     position: relative;
     width: 50px;
 }
-
 .theme-switch input { display:none; }
 
 .slider {
-    background-color: #333; /* Couleur de fond du switch sombre */
-    bottom: 0; cursor: pointer; left: 0; position: absolute;
-    right: 0; top: 0; transition: .4s;
+    background-color: #333;
+    bottom: 0; cursor: pointer; left: 0; right: 0; top: 0;
+    position: absolute; transition: .4s;
     border-radius: 34px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 4px;
     border: 1px solid #444;
 }
 
-/* Cercle qui bouge */
 .slider::before {
     background-color: #fff;
     bottom: 3px; content: ""; height: 20px; left: 3px;
@@ -190,82 +285,110 @@ img { max-width: 100%; height: auto; display: block; border-radius: inherit;}
     border-radius: 50%; z-index: 2;
 }
 
-/* Si c'est coché (mode clair) */
 input:checked + .slider { background-color: var(--accent); border-color: var(--accent); }
 input:checked + .slider::before { transform: translateX(24px); }
 
-/* Les icônes SVG */
-.icon-sun, .icon-moon { z-index: 1; transition: 0.3s; }
-.icon-moon { color: #B3B3B3; }
-.icon-sun { color: #FFD700; opacity: 0; }
+/* Icônes */
+.icon-sun, .icon-moon, .icon-fr, .icon-en { z-index: 1; transition: 0.3s; position: absolute; top: 50%; transform: translateY(-50%); }
+.icon-moon { color: #B3B3B3; right: 6px; }
+.icon-sun { color: #FFD700; opacity: 0; left: 6px; }
+.icon-fr { right: 6px; color: var(--text-muted); font-size: 10px; font-weight: bold; }
+.icon-en { left: 6px; opacity: 0; color: var(--bg-main); font-size: 10px; font-weight: bold; }
 
-/* Quand on passe en mode clair */
 input:checked ~ .slider .icon-moon { opacity: 0; }
 input:checked ~ .slider .icon-sun { opacity: 1; }
+input:checked ~ .slider .icon-fr { opacity: 0; }
+input:checked ~ .slider .icon-en { opacity: 1; color: white; }
 
-/* --- AJOUTS POUR LES IMAGES --- */
-.avatar-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover; /* Ça évite que ta tête soit écrasée si l'image n'est pas carrée */
-    border: 3px solid var(--accent); /* Un petit bord vert sympa */
-    flex-shrink: 0;
-}
-
-.project-img {
-    width: 100%;
-    aspect-ratio: 16/9; /* Format rectangulaire standard */
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 12px;
-}
-
-/* --- STYLE POUR LES ICÔNES DE COMPÉTENCES --- */
-
-/* Le carré gris qui sert de fond */
-.icon-box {
-    width: 100%;
-    aspect-ratio: 1/1; /* Garde le format carré */
-    background-color: var(--card-hover); /* Gris foncé (ou clair selon le thème) */
-    border-radius: 6px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center; /* Centre verticalement */
-    justify-content: center; /* Centre horizontalement */
-    padding: 20px; /* Marge interne pour que le logo ne touche pas les bords */
-}
-
-/* L'image du logo elle-même */
-.icon-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* L'image s'adapte sans être écrasée/étirée */
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); /* Une petite ombre pour le relief */
-}
 
 /* =========================================
-   GESTION MULTILINGUE (FR / EN)
+   6. GESTION MULTILINGUE (Optimisée)
    ========================================= */
-
-/* 1. On cache ce qui n'est pas dans la langue actuelle */
 html:lang(fr) .lang-en { display: none !important; }
 html:lang(en) .lang-fr { display: none !important; }
 
-/* 2. On s'assure que les éléments visibles gardent leur comportement naturel */
-/* (C'est ici qu'on corrige le bug du "block" qui cassait l'alignement) */
+/* Force l'affichage en ligne pour les spans (Fix alignement) */
 html:lang(fr) span.lang-fr,
 html:lang(en) span.lang-en { 
     display: inline !important; 
 }
 
-/* 3. Ajustement pour les icônes du switch */
-.icon-fr, .icon-en {
-    font-size: 10px; font-weight: bold; position: absolute; top: 50%;
-    transform: translateY(-50%); transition: 0.3s;
-}
-.icon-fr { right: 6px; color: var(--text-muted); }
-.icon-en { left: 6px; opacity: 0; color: var(--bg-main); }
 
-input:checked ~ .slider .icon-fr { opacity: 0; }
-input:checked ~ .slider .icon-en { opacity: 1; color: white; }
+/* =========================================
+   7. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+
+/* --- TABLETTES & MOBILE (max-width: 900px) --- */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; /* Ne flotte plus */
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .nav-links {
+        flex-direction: row; /* Liens en ligne */
+        flex-wrap: wrap; /* Passage à la ligne si besoin */
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .nav-links a { font-size: 0.9rem; }
+}
+
+/* --- MOBILE UNIQUEMENT (max-width: 600px) --- */
+@media (max-width: 600px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .avatar-img {
+        width: 120px; height: 120px;
+    }
+
+    .profile-header h1 { font-size: 2rem !important; }
+    
+    .grid-container {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Retour en colonne pour les tout petits écrans */
+        align-items: stretch;
+    }
+    
+    .nav-links a { justify-content: center; }
+}
+
+/* --- GRANDS ECRANS / 27 POUCES (min-width: 1600px) --- */
+@media (min-width: 1600px) {
+    body {
+        font-size: 1.1rem; /* Texte légèrement plus gros */
+    }
+
+    .main-content {
+        padding: 60px 100px;
+        max-width: 1800px; /* Evite que le texte s'étire trop */
+        margin-right: auto; /* Centre le contenu s'il y a de la place */
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cartes plus larges */
+        gap: 40px;
+    }
+}
