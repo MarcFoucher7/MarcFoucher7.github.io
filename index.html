@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
+    <title>Mon Portfolio - Marc Foucher</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,26 +14,64 @@
         </div>
 
         <div class="theme-switch-wrapper">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
+            <label class="theme-switch" for="checkbox-theme">
+                <input type="checkbox" id="checkbox-theme" />
                 <div class="slider round">
                     <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </div>
             </label>
-            <span style="font-size: 12px; color: var(--text-muted);">Thème</span>
+            <span class="lang-fr" style="font-size: 12px; color: var(--text-muted);">Thème</span>
+            <span class="lang-en" style="font-size: 12px; color: var(--text-muted);">Theme</span>
+        </div>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox-lang">
+                <input type="checkbox" id="checkbox-lang" />
+                <div class="slider round">
+                    <span class="icon-en">EN</span>
+                    <span class="icon-fr">FR</span>
+                </div>
+            </label>
+            <span class="lang-fr" style="font-size: 12px; color: var(--text-muted);">Langue</span>
+            <span class="lang-en" style="font-size: 12px; color: var(--text-muted);">Language</span>
         </div>
 
         <div class="nav-links" style="margin-top: 20px;">
-            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 15px 12px 5px; letter-spacing: 1px;">Espace Recruteur</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 15px 12px 5px; letter-spacing: 1px;">
+                <span class="lang-fr">Espace Recruteur</span>
+                <span class="lang-en">Recruiter Area</span>
+            </div>
             
-            <a href="#moi">👤 Profil & CV</a>
-            <a href="#competences">⚡ Mes Compétences</a>
-            <a href="#apprentissage">🎓 Mon Parcours</a> <a href="#projets">🚀 Mes Projets</a>
-            <a href="#autres">✨ Contact</a>
+            <a href="#moi">
+                <span class="lang-fr">👤 Profil & CV</span>
+                <span class="lang-en">👤 Profile & CV</span>
+            </a>
+            <a href="#competences">
+                <span class="lang-fr">⚡ Mes Compétences</span>
+                <span class="lang-en">⚡ My Skills</span>
+            </a>
+            <a href="#apprentissage">
+                <span class="lang-fr">🎓 Mon Parcours</span>
+                <span class="lang-en">🎓 My Background</span>
+            </a> 
+            <a href="#projets">
+                <span class="lang-fr">🚀 Mes Projets</span>
+                <span class="lang-en">🚀 My Projects</span>
+            </a>
+            <a href="#autres">
+                <span class="lang-fr">✨ Contact</span>
+                <span class="lang-en">✨ Contact</span>
+            </a>
 
-            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 30px 12px 5px; letter-spacing: 1px;">Scolarité</div>
-            <a href="dossier.html" style="color: var(--accent);">🎓 Dossier S3 (IUT)</a>
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 30px 12px 5px; letter-spacing: 1px;">
+                <span class="lang-fr">Scolarité</span>
+                <span class="lang-en">Education</span>
+            </div>
+            <a href="dossier.html" style="color: var(--accent);">
+                <span class="lang-fr">🎓 Dossier S3 (IUT)</span>
+                <span class="lang-en">🎓 Academic File (S3)</span>
+            </a>
         </div>
     </nav>
 
@@ -45,40 +83,64 @@
                     <img src="images/profil.png" alt="Marc Foucher" class="avatar-img">
                 </div>
                 <div>
-                    <h4 style="color: var(--accent); letter-spacing: 2px;">PROFIL ÉTUDIANT</h4>
+                    <h4 style="color: var(--accent); letter-spacing: 2px;">
+                        <span class="lang-fr">PROFIL ÉTUDIANT</span>
+                        <span class="lang-en">STUDENT PROFILE</span>
+                    </h4>
                     <h1 style="font-size: 3rem; margin: 10px 0;">Marc FOUCHER</h1>
-                    <p style="color: var(--text-muted); font-size: 1.1rem;">
+                    <p class="lang-fr" style="color: var(--text-muted); font-size: 1.1rem;">
                         Étudiant BUT Informatique (Laval) • Recherche de Stage (avril - juillet 2026)
+                    </p>
+                    <p class="lang-en" style="color: var(--text-muted); font-size: 1.1rem;">
+                        CS Student (Laval, France) • Looking for Internship (April - July 2026)
                     </p>
                     
                     <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="cv_FOUCHER_Marc.pdf" target="_blank" style="background-color: var(--accent); color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
+                        
+                        <a href="cv_FOUCHER_Marc.pdf" target="_blank" class="lang-fr" style="background-color: var(--accent); color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
                             📄 Télécharger mon CV
                         </a>
-                        <a href="mailto:foucher.marc7@gmail.com" style="border: 1px solid var(--text-muted); color: var(--text-main); padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold;">
-                            Me Contacter
+
+                        <a href="CVMARCen.pdf" target="_blank" class="lang-en" style="background-color: var(--accent); color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
+                            📄 Download my CV
                         </a>
+
+                        <a href="mailto:foucher.marc7@gmail.com" style="border: 1px solid var(--text-muted); color: var(--text-main); padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold;">
+                            <span class="lang-fr">Me Contacter</span>
+                            <span class="lang-en">Contact Me</span>
+                        </a>
+                    </div>
                     </div>
                 </div>
             </div>
             
             <div style="margin-top: 30px; max-width: 800px; color: var(--text-muted); line-height: 1.6;">
-                <p>
+                <p class="lang-fr">
                     Actuellement étudiant en 2ème année de BUT Informatique, je combine mes compétences techniques (Java, Web, SQL) avec une rigueur acquise lors de mes expériences professionnelles. Passionné par le développement Fullstack, je suis prêt à intégrer vos équipes pour mon stage de fin de semestre.
+                </p>
+                <p class="lang-en">
+                    Currently a 2nd-year Computer Science student, I combine my technical skills (Java, Web, SQL) with discipline acquired during my professional experiences. Passionate about Fullstack development, I am ready to join your team for my end-of-semester internship.
                 </p>
             </div>
         </section>
 
         <section id="competences">
-            <h2>Mes Compétences</h2>
+            <h2>
+                <span class="lang-fr">Mes Compétences</span>
+                <span class="lang-en">My Skills</span>
+            </h2>
             <div class="grid-container">
                 
                 <div class="card">
                     <div class="icon-box">
                         <img src="images/Java_Logo.svg" alt="Logo Java">
                     </div>
-                    <h3>Développement Java</h3>
-                    <p>POO, Modèle MVC, JavaFX, Design Patterns</p>
+                    <h3>
+                        <span class="lang-fr">Développement Java</span>
+                        <span class="lang-en">Java Development</span>
+                    </h3>
+                    <p class="lang-fr">POO, Modèle MVC, JavaFX, Design Patterns</p>
+                    <p class="lang-en">OOP, MVC Model, JavaFX, Design Patterns</p>
                 </div>
 
                 <div class="card">
@@ -93,8 +155,12 @@
                     <div class="icon-box">
                         <img src="images/sql.png" alt="Logo SQL">
                     </div>
-                    <h3>Base de Données</h3>
-                    <p>SQL, MySQL, SQL Server, Modélisation (MCD/MLD)</p>
+                    <h3>
+                        <span class="lang-fr">Base de Données</span>
+                        <span class="lang-en">Databases</span>
+                    </h3>
+                    <p class="lang-fr">SQL, MySQL, SQL Server, Modélisation (MCD/MLD)</p>
+                    <p class="lang-en">SQL, MySQL, SQL Server, Modeling (CDM/LDM)</p>
                 </div>
 
                 <div class="card">
@@ -102,80 +168,130 @@
                         <img src="images/github.png" alt="Logo GitHub">
                     </div>
                     <h3>Outils & DevOps</h3>
-                    <p>Git/GitHub, Linux, Docker, Figma, Méthodes Agiles</p>
+                    <p class="lang-fr">Git/GitHub, Linux, Docker, Figma, Méthodes Agiles</p>
+                    <p class="lang-en">Git/GitHub, Linux, Docker, Figma, Agile Methods</p>
                 </div>
 
             </div>
         </section>
 
         <section id="apprentissage">
-            <h2>Apprentissage Critique</h2>
-            <p style="color:var(--text-muted); margin-bottom: 20px;">Mon parcours académique</p>
+            <h2>
+                <span class="lang-fr">Apprentissage Critique</span>
+                <span class="lang-en">Academic Background</span>
+            </h2>
+            <p class="lang-fr" style="color:var(--text-muted); margin-bottom: 20px;">Mon parcours académique</p>
+            <p class="lang-en" style="color:var(--text-muted); margin-bottom: 20px;">My academic path</p>
 
             <details open>
-                <summary>IUT Laval (En cours)</summary>
+                <summary>
+                    <span class="lang-fr">IUT Laval (En cours)</span>
+                    <span class="lang-en">IUT Laval (Current)</span>
+                </summary>
                 <div class="year-content">
                     <ul>
-                        <li><strong>Développement :</strong> Approfondissement Java, JavaScript et initiation aux méthodes agiles (Scrum).</li>
-                        <li><strong>Certifications :</strong> Niveau TOEIC Listening B2, Projet Voltaire (Niveau Affaires).</li>
-                        <li><strong>Projets :</strong> Réalisation de nombreux projets académiques structurés.</li>
+                        <li>
+                            <strong><span class="lang-fr">Développement :</span><span class="lang-en">Development:</span></strong> 
+                            <span class="lang-fr">Approfondissement Java, JavaScript et initiation aux méthodes agiles (Scrum).</span>
+                            <span class="lang-en">Advanced Java, JavaScript and introduction to Agile methods (Scrum).</span>
+                        </li>
+                        <li>
+                            <strong>Certifications :</strong> 
+                            <span class="lang-fr">Niveau TOEIC Listening B2, Projet Voltaire (Niveau Affaires).</span>
+                            <span class="lang-en">TOEIC Listening Level B2, Voltaire Project (Business Level).</span>
+                        </li>
+                        <li>
+                            <strong><span class="lang-fr">Projets :</span><span class="lang-en">Projects:</span></strong> 
+                            <span class="lang-fr">Réalisation de nombreux projets académiques structurés.</span>
+                            <span class="lang-en">Completion of numerous structured academic projects.</span>
+                        </li>
                     </ul>
                 </div>
             </details>
 
             <details>
-                <summary>Baccalauréat Général</summary>
+                <summary>
+                    <span class="lang-fr">Baccalauréat Général</span>
+                    <span class="lang-en">High School Diploma</span>
+                </summary>
                 <div class="year-content">
-                    <p>Obtention du Baccalauréat général avec la mention Bien Option Math Physique.</p>
+                    <p class="lang-fr">Obtention du Baccalauréat général avec la mention Bien Option Math Physique.</p>
+                    <p class="lang-en">Obtained General Baccalaureate with Honors, Math & Physics option.</p>
                 </div>
             </details>
         </section>
 
         <section id="projets">
-            <h2>Mes Projets</h2>
+            <h2>
+                <span class="lang-fr">Mes Projets</span>
+                <span class="lang-en">My Projects</span>
+            </h2>
             <div class="grid-container">
 
                 <a href="#" class="card">
                     <img src="images/morpion.png" alt="Jeu Morpion" class="project-img">
-                    <h3>Jeu Morpion</h3>
-                    <p>Java (MVC, POO) - Jeu avec IA et interfaces graphiques.</p>
+                    <h3>
+                        <span class="lang-fr">Jeu Morpion</span>
+                        <span class="lang-en">Tic-Tac-Toe Game</span>
+                    </h3>
+                    <p class="lang-fr">Java (MVC, POO) - Jeu avec IA et interfaces graphiques.</p>
+                    <p class="lang-en">Java (MVC, OOP) - Game with AI and GUI.</p>
                 </a>
 
                 <a href="#" class="card">
-                    <img src="images/timeLine.png" alt="Jeu Morpion" class="project-img">
+                    <img src="images/timeLine.png" alt="Timeline Game" class="project-img">
                     <h3>Timeline Game</h3>
-                    <p>JavaScript - Architecture MVC et logique fluide.</p>
+                    <p class="lang-fr">JavaScript - Architecture MVC et logique fluide.</p>
+                    <p class="lang-en">JavaScript - MVC Architecture and smooth logic.</p>
                 </a>
 
                 <a href="#" class="card">
-                    <img src="images/trading.png" alt="Jeu Morpion" class="project-img">
-                    <h3>Robot Trading</h3>
-                    <p>Python - Analyse marchés financiers avec API & BDD.</p>
+                    <img src="images/trading.png" alt="Robot Trading" class="project-img">
+                    <h3>
+                        <span class="lang-fr">Robot Trading</span>
+                        <span class="lang-en">Trading Bot</span>
+                    </h3>
+                    <p class="lang-fr">Python - Analyse marchés financiers avec API & BDD.</p>
+                    <p class="lang-en">Python - Financial market analysis with API & DB.</p>
                 </a>
 
                 <a href="#" class="card">
-                   <img src="images/figma.png" alt="Jeu Morpion" class="project-img">
+                   <img src="images/figma.png" alt="UX/UI Design" class="project-img">
                     <h3>UX/UI Design</h3>
-                    <p>Figma - Conception de sites (Recyclage, Primeur).</p>
+                    <p class="lang-fr">Figma - Conception de sites (Recyclage, Primeur).</p>
+                    <p class="lang-en">Figma - Website design (Recycling, Greengrocer).</p>
                 </a>
 
             </div>
         </section>
 
         <section id="autres">
-            <h2>Autres / Contact</h2>
+            <h2>
+                <span class="lang-fr">Autres / Contact</span>
+                <span class="lang-en">Other / Contact</span>
+            </h2>
             <div style="background-color: var(--card-bg); padding: 20px; border-radius: 8px; box-shadow: var(--card-shadow);">
                 
-                <h3>Expériences Professionnelles</h3>
+                <h3>
+                    <span class="lang-fr">Expériences Professionnelles</span>
+                    <span class="lang-en">Professional Experience</span>
+                </h3>
                 <p style="color: var(--text-muted); margin-bottom: 15px;">
-                    <strong>Vendeur sur les marchés (5 ans) :</strong> Société "Passionnés des huîtres" et "Chez Naïm".
-                    <br><em>Compétences acquises : Relation client, autonomie, ponctualité.</em>
+                    <strong class="lang-fr">Vendeur sur les marchés (5 ans) :</strong>
+                    <strong class="lang-en">Market Vendor (5 years):</strong>
+                    Société "Passionnés des huîtres" et "Chez Naïm".
+                    <br>
+                    <em class="lang-fr">Compétences acquises : Relation client, autonomie, ponctualité.</em>
+                    <em class="lang-en">Acquired skills: Customer relations, autonomy, punctuality.</em>
                 </p>
 
                 <h3>Passions</h3>
                 <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    🎵 Musicien : Batterie (9 ans de pratique)<br>
-                    sportif : Handball
+                    <span class="lang-fr">🎵 Musicien : Batterie (9 ans de pratique)</span>
+                    <span class="lang-en">🎵 Musician: Drums (9 years of practice)</span>
+                    <br>
+                    <span class="lang-fr">Sportif : Handball</span>
+                    <span class="lang-en">Sports: Handball</span>
                 </p>
 
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
@@ -187,40 +303,63 @@
         </section>
 
         <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); text-align: center; font-size: 12px;">
-            &copy; 2025 - Hébergé sur GitHub Pages
+            &copy; 2025 - 
+            <span class="lang-fr">Hébergé sur GitHub Pages</span>
+            <span class="lang-en">Hosted on GitHub Pages</span>
         </footer>
 
     </main>
 
     <script>
-        // On sélectionne le bouton checkbox et le corps de la page
-        const toggleSwitch = document.querySelector('#checkbox');
-        const body = document.body;
-
-        // 1. Au chargement, on vérifie si l'utilisateur avait déjà choisi un thème avant
+        // --- GESTION DU THEME (Dark/Light) ---
+        const themeSwitch = document.querySelector('#checkbox-theme');
         const currentTheme = localStorage.getItem('theme');
+        
         if (currentTheme) {
-            body.classList.add(currentTheme); // On applique le thème sauvegardé
+            document.body.classList.add(currentTheme);
             if (currentTheme === 'light-theme') {
-                toggleSwitch.checked = true; // On met le bouton dans la bonne position
+                themeSwitch.checked = true;
             }
         }
 
-        // 2. Fonction qui se lance quand on clique sur le switch
-        function switchTheme(e) {
+        themeSwitch.addEventListener('change', function(e) {
             if (e.target.checked) {
-                // Si coché, on passe en clair
-                body.classList.add('light-theme');
-                localStorage.setItem('theme', 'light-theme'); // On sauvegarde le choix
+                document.body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light-theme');
             } else {
-                // Sinon, on enlève le mode clair (retour au sombre par défaut)
-                body.classList.remove('light-theme');
-                localStorage.setItem('theme', 'dark-theme'); // On sauvegarde le choix
+                document.body.classList.remove('light-theme');
+                localStorage.setItem('theme', 'dark-theme');
             }
+        });
+
+        // --- GESTION DE LA LANGUE (FR/EN) ---
+        const langSwitch = document.querySelector('#checkbox-lang');
+        const currentLang = localStorage.getItem('lang');
+        const htmlTag = document.documentElement; // La balise <html>
+
+        // 1. Au chargement, on applique la langue sauvegardée
+        if (currentLang) {
+            htmlTag.setAttribute('lang', currentLang);
+            if (currentLang === 'en') {
+                langSwitch.checked = true; // Switch à droite
+            }
+        } else {
+            // Par défaut c'est FR, on s'assure que c'est bien mis
+            htmlTag.setAttribute('lang', 'fr');
         }
 
-        // On écoute le changement d'état du bouton
-        toggleSwitch.addEventListener('change', switchTheme, false);
+        // 2. Au changement du switch
+        langSwitch.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                // Mode EN
+                htmlTag.setAttribute('lang', 'en');
+                localStorage.setItem('lang', 'en');
+            } else {
+                // Mode FR
+                htmlTag.setAttribute('lang', 'fr');
+                localStorage.setItem('lang', 'fr');
+            }
+        });
     </script>
 
 </body>

@@ -243,3 +243,38 @@ input:checked ~ .slider .icon-sun { opacity: 1; }
     object-fit: contain; /* L'image s'adapte sans être écrasée/étirée */
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); /* Une petite ombre pour le relief */
 }
+
+/* =========================================
+   GESTION MULTILINGUE (FR / EN)
+   ========================================= */
+
+/* Par défaut (FR), on cache tous les éléments marqués "lang-en" */
+html:lang(fr) .lang-en { display: none !important; }
+html:lang(fr) .lang-fr { display: block !important; } /* (Au cas où) */
+
+/* Mode Anglais (EN), on cache le FR et on affiche l'EN */
+html:lang(en) .lang-fr { display: none !important; }
+html:lang(en) .lang-en { display: inline-block !important; } 
+/* Note : on met inline-block ou block selon le besoin, mais le browser gère souvent */
+
+/* Pour les blocs div entiers */
+html:lang(en) div.lang-en, 
+html:lang(en) section.lang-en,
+html:lang(en) h1.lang-en,
+html:lang(en) p.lang-en { display: block !important; }
+
+/* --- ICONES DRAPEAUX DANS LE SWITCH --- */
+.icon-fr, .icon-en {
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+.icon-fr { right: 6px; color: var(--text-muted); } /* Quand bouton à gauche (FR) */
+.icon-en { left: 6px; opacity: 0; color: var(--bg-main); } /* Quand bouton à gauche (Caché) */
+
+/* Quand coché (Mode EN) */
+input:checked ~ .slider .icon-fr { opacity: 0; }
+input:checked ~ .slider .icon-en { opacity: 1; color: white; } /* Texte visible sur le rond */

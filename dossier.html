@@ -10,73 +10,132 @@
 
     <nav class="sidebar">
         <div class="logo">
-            <span>///</span> Dossier S3
+            <span>///</span> 
+            <span class="lang-fr">Dossier S3</span>
+            <span class="lang-en">S3 File</span>
         </div>
 
         <div class="theme-switch-wrapper">
-            <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox" />
+            <label class="theme-switch" for="checkbox-theme">
+                <input type="checkbox" id="checkbox-theme" />
                 <div class="slider round">
                     <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </div>
             </label>
-            <span style="font-size: 12px; color: var(--text-muted);">Thème</span>
+            <span class="lang-fr" style="font-size: 12px; color: var(--text-muted);">Thème</span>
+            <span class="lang-en" style="font-size: 12px; color: var(--text-muted);">Theme</span>
+        </div>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox-lang">
+                <input type="checkbox" id="checkbox-lang" />
+                <div class="slider round">
+                    <span class="icon-en">EN</span>
+                    <span class="icon-fr">FR</span>
+                </div>
+            </label>
+            <span class="lang-fr" style="font-size: 12px; color: var(--text-muted);">Langue</span>
+            <span class="lang-en" style="font-size: 12px; color: var(--text-muted);">Language</span>
         </div>
 
         <div class="nav-links" style="margin-top: 20px;">
             <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 15px 12px 5px; letter-spacing: 1px;">Navigation</div>
-            <a href="index.html">⬅ Retour Portfolio</a>
+            <a href="index.html">
+                <span class="lang-fr">⬅ Retour Portfolio</span>
+                <span class="lang-en">⬅ Back to Portfolio</span>
+            </a>
 
-            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 25px 12px 5px; letter-spacing: 1px;">Dossier IUT</div>
-            <a href="#reflexion">🧠 Réflexion</a>
-            <a href="#objectifs">🎯 Objectifs</a>
-            <a href="#grilles">📊 Grilles</a>
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin: 25px 12px 5px; letter-spacing: 1px;">
+                <span class="lang-fr">Dossier IUT</span>
+                <span class="lang-en">Academic File</span>
+            </div>
+            <a href="#reflexion">
+                <span class="lang-fr">🧠 Réflexion</span>
+                <span class="lang-en">🧠 Reflection</span>
+            </a>
+            <a href="#objectifs">
+                <span class="lang-fr">🎯 Objectifs</span>
+                <span class="lang-en">🎯 Goals</span>
+            </a>
+            <a href="#grilles">
+                <span class="lang-fr">📊 Grilles</span>
+                <span class="lang-en">📊 Skills Matrix</span>
+            </a>
         </div>
     </nav>
 
     <main class="main-content">
 
         <section id="header-dossier">
-            <h1>Dossier Académique - Semestre 3</h1>
-            <p style="color: var(--text-muted);">Analyse réflexive, objectifs et validation des compétences.</p>
+            <h1>
+                <span class="lang-fr">Dossier Académique - Semestre 3</span>
+                <span class="lang-en">Academic File - Semester 3</span>
+            </h1>
+            <p class="lang-fr" style="color: var(--text-muted);">Analyse réflexive, objectifs et validation des compétences.</p>
+            <p class="lang-en" style="color: var(--text-muted);">Reflective analysis, goals, and skills validation.</p>
         </section>
 
         <section id="reflexion">
-            <h2>1. Projection & Recherche de stage</h2>
+            <h2>
+                <span class="lang-fr">1. Projection & Recherche de stage</span>
+                <span class="lang-en">1. Projection & Internship Search</span>
+            </h2>
             
             <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     
                     <div style="padding: 15px; background: rgba(29, 185, 84, 0.1); border-radius: 8px; border-left: 4px solid var(--accent);">
                         <h4 style="color: var(--accent); margin-bottom: 12px; display:flex; align-items:center; gap:8px;">
-                            <span style="font-size:1.2em">💪</span> Forces (Interne)
+                            <span style="font-size:1.2em">💪</span> 
+                            <span class="lang-fr">Forces (Interne)</span>
+                            <span class="lang-en">Strengths (Internal)</span>
                         </h4>
                         <ul style="padding-left: 20px; color: var(--text-main); line-height: 1.6;">
-                            <li><strong>Savoir-Être :</strong> Aisance relationnelle et autonomie acquises via 5 ans de vente sur les marchés.</li>
-                            <li><strong>Savoir-Faire :</strong> Solides bases en POO (Java) et architecture MVC.</li>
-                            <li><strong>Langue :</strong> Bon niveau d'anglais technique et conversationnel.</li>
+                            <li>
+                                <strong><span class="lang-fr">Savoir-Être :</span><span class="lang-en">Soft Skills:</span></strong> 
+                                <span class="lang-fr">Aisance relationnelle et autonomie acquises via 5 ans de vente sur les marchés.</span>
+                                <span class="lang-en">Interpersonal skills and autonomy acquired through 5 years of market sales.</span>
+                            </li>
+                            <li>
+                                <strong><span class="lang-fr">Savoir-Faire :</span><span class="lang-en">Hard Skills:</span></strong> 
+                                <span class="lang-fr">Solides bases en POO (Java) et architecture MVC.</span>
+                                <span class="lang-en">Solid foundations in OOP (Java) and MVC architecture.</span>
+                            </li>
+                            <li>
+                                <strong><span class="lang-fr">Langue :</span><span class="lang-en">Language:</span></strong> 
+                                <span class="lang-fr">Bon niveau d'anglais technique et conversationnel.</span>
+                                <span class="lang-en">Good level of technical and conversational English.</span>
+                            </li>
                         </ul>
                     </div>
 
                     <div style="padding: 15px; background: rgba(227, 79, 38, 0.1); border-radius: 8px; border-left: 4px solid #E34F26;">
                         <h4 style="color: #E34F26; margin-bottom: 12px; display:flex; align-items:center; gap:8px;">
-                            <span style="font-size:1.2em">🔧</span> Faiblesses & Outils de Remédiation
+                            <span style="font-size:1.2em">🔧</span> 
+                            <span class="lang-fr">Faiblesses & Outils de Remédiation</span>
+                            <span class="lang-en">Weaknesses & Remediation Tools</span>
                         </h4>
                         <ul style="list-style: none; padding: 0; color: var(--text-main);">
                             
                             <li style="margin-bottom: 15px;">
-                                <strong>1. Administration & Réseaux</strong><br>
+                                <strong>1. <span class="lang-fr">Administration & Réseaux</span><span class="lang-en">Administration & Networks</span></strong><br>
                                 <span style="color: var(--text-muted); font-size: 0.9em;">
-                                    👉 <em>Action :</em> Refaire les TP de base (Adressage IP, VLANs).<br>
-                                    🛠 <em>Outils :</em> Cisco Packet Tracer + Chaînes YouTube (ex: Pierre Giraud).
+                                    👉 <em>Action :</em> 
+                                    <span class="lang-fr">Refaire les TP de base (Adressage IP, VLANs).</span>
+                                    <span class="lang-en">Redo basic labs (IP addressing, VLANs).</span><br>
+                                    🛠 <em><span class="lang-fr">Outils :</span><span class="lang-en">Tools:</span></em> 
+                                    Cisco Packet Tracer + YouTube (ex: Pierre Giraud).
                                 </span>
                             </li>
 
                             <li>
-                                <strong>2. Veille Technologique (Irrégulière)</strong><br>
+                                <strong>2. <span class="lang-fr">Veille Technologique (Irrégulière)</span><span class="lang-en">Tech Watch (Irregular)</span></strong><br>
                                 <span style="color: var(--text-muted); font-size: 0.9em;">
-                                    👉 <em>Action :</em> Centraliser mes sources d'infos.<br>
-                                    🛠 <em>Outils :</em> Agrégateur RSS (Feedly) + Newsletter "Dev.to".
+                                    👉 <em>Action :</em> 
+                                    <span class="lang-fr">Centraliser mes sources d'infos.</span>
+                                    <span class="lang-en">Centralize my info sources.</span><br>
+                                    🛠 <em><span class="lang-fr">Outils :</span><span class="lang-en">Tools:</span></em> 
+                                    RSS (Feedly) + Newsletter "Dev.to".
                                 </span>
                             </li>
                         </ul>
@@ -85,38 +144,64 @@
         </section>
 
         <section id="objectifs">
-            <h2>2. Objectifs S3 : Culture & Langue</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Suivi de mes objectifs personnels et académiques pour le semestre.</p>
+            <h2>
+                <span class="lang-fr">2. Objectifs S3 : Culture & Langue</span>
+                <span class="lang-en">2. S3 Goals: Culture & Language</span>
+            </h2>
+            <p class="lang-fr" style="color: var(--text-muted); margin-bottom: 20px;">Suivi de mes objectifs personnels et académiques pour le semestre.</p>
+            <p class="lang-en" style="color: var(--text-muted); margin-bottom: 20px;">Tracking my personal and academic goals for the semester.</p>
             
             <div class="grid-container">
                 
                 <div class="card" style="border-top: 4px solid #007ACC;">
                     <h3 style="display: flex; justify-content: space-between;">
-                        Orthographe <span>✍️</span>
+                        <span class="lang-fr">Orthographe</span><span class="lang-en">Spelling</span> <span>✍️</span>
                     </h3>
-                    <p style="font-weight: bold; margin-bottom: 10px;">Plateforme Écrit+</p>
+                    <p style="font-weight: bold; margin-bottom: 10px;">
+                        <span class="lang-fr">Plateforme Écrit+</span><span class="lang-en">Écrit+ Platform</span>
+                    </p>
                     
                     <div style="background: #333; height: 8px; border-radius: 4px; margin: 15px 0;">
                         <div style="background: #007ACC; width: 72%; height: 100%; border-radius: 4px;"></div>
                     </div>
                     
                     <ul style="font-size: 0.9em; color: var(--text-muted); line-height: 1.8;">
-                        <li><strong>Score actuel :</strong> 517 points</li>
-                        <li><strong>Objectif cible :</strong> 720 points</li>
-                        <li><strong>Action :</strong> Pratique hebdomadaire sur Écrit+</li>
+                        <li>
+                            <strong><span class="lang-fr">Score actuel :</span><span class="lang-en">Current score:</span></strong> 517 points
+                        </li>
+                        <li>
+                            <strong><span class="lang-fr">Objectif cible :</span><span class="lang-en">Target goal:</span></strong> 720 points
+                        </li>
+                        <li>
+                            <strong>Action :</strong> 
+                            <span class="lang-fr">Pratique hebdomadaire sur Écrit+</span>
+                            <span class="lang-en">Weekly practice on Écrit+</span>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="card" style="border-top: 4px solid #F7DF1E;">
                     <h3 style="display: flex; justify-content: space-between;">
-                        Culture & Sociologie <span>🧠</span>
+                        <span class="lang-fr">Culture & Sociologie</span><span class="lang-en">Culture & Sociology</span> <span>🧠</span>
                     </h3>
-                    <p style="font-weight: bold; margin-bottom: 10px;">Les interactions sociales</p>
+                    <p style="font-weight: bold; margin-bottom: 10px;">
+                        <span class="lang-fr">Les interactions sociales</span><span class="lang-en">Social interactions</span>
+                    </p>
                     
                     <ul style="font-size: 0.9em; color: var(--text-muted); line-height: 1.8; margin-top: 15px;">
-                        <li><strong>Auteur d'étude :</strong> Erving Goffman</li>
-                        <li><strong>Sujet :</strong> Analyse des interactions et de la "mise en scène" sociale.</li>
-                        <li><strong>But :</strong> Mieux comprendre les codes sociaux en entreprise.</li>
+                        <li>
+                            <strong><span class="lang-fr">Auteur d'étude :</span><span class="lang-en">Author of study:</span></strong> Erving Goffman
+                        </li>
+                        <li>
+                            <strong><span class="lang-fr">Sujet :</span><span class="lang-en">Topic:</span></strong> 
+                            <span class="lang-fr">Analyse des interactions et de la "mise en scène" sociale.</span>
+                            <span class="lang-en">Analysis of interactions and social "staging".</span>
+                        </li>
+                        <li>
+                            <strong><span class="lang-fr">But :</span><span class="lang-en">Goal:</span></strong> 
+                            <span class="lang-fr">Mieux comprendre les codes sociaux en entreprise.</span>
+                            <span class="lang-en">Better understand social codes in business.</span>
+                        </li>
                     </ul>
                 </div>
 
@@ -124,44 +209,85 @@
         </section>
 
         <section id="grilles">
-            <h2>3. Validation des Compétences (Semestre 3)</h2>
+            <h2>
+                <span class="lang-fr">3. Validation des Compétences (Semestre 3)</span>
+                <span class="lang-en">3. Skills Validation (Semester 3)</span>
+            </h2>
             <p style="color: var(--text-muted); margin-bottom: 20px;">
-                Auto-évaluation basée sur le référentiel du BUT Informatique.
-                <br><small>Légende : <strong style="color:#E34F26">NA</strong> (Non Acquis), <strong style="color:orange">EC</strong> (En Cours), <strong style="color:var(--accent)">A</strong> (Acquis)</small>
+                <span class="lang-fr">Auto-évaluation basée sur le référentiel du BUT Informatique.</span>
+                <span class="lang-en">Self-assessment based on the BUT Computer Science reference framework.</span>
+                <br>
+                <small>
+                    <span class="lang-fr">Légende : <strong style="color:#E34F26">NA</strong> (Non Acquis), <strong style="color:orange">EC</strong> (En Cours), <strong style="color:var(--accent)">A</strong> (Acquis)</span>
+                    <span class="lang-en">Legend: <strong style="color:#E34F26">NA</strong> (Not Acquired), <strong style="color:orange">EC</strong> (In Progress), <strong style="color:var(--accent)">A</strong> (Acquired)</span>
+                </small>
             </p>
 
             <details open>
-                <summary>1. RÉALISER (Développement d'applications)</summary>
+                <summary>
+                    <span class="lang-fr">1. RÉALISER (Développement d'applications)</span>
+                    <span class="lang-en">1. REALIZE (Application Development)</span>
+                </summary>
                 <div class="year-content">
-                    <p style="margin-bottom: 15px; font-style: italic;">Partir des exigences et aller jusqu’à une application complète.</p>
+                    <p class="lang-fr" style="margin-bottom: 15px; font-style: italic;">Partir des exigences et aller jusqu’à une application complète.</p>
+                    <p class="lang-en" style="margin-bottom: 15px; font-style: italic;">From requirements to a complete application.</p>
+                    
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-main);">
                         <thead>
                             <tr style="border-bottom: 1px solid var(--border-color); text-align: left;">
-                                <th style="padding: 10px;">Apprentissage Critique (AC)</th>
-                                <th style="padding: 10px;">Niveau</th>
-                                <th style="padding: 10px;">Preuve / Situation</th>
+                                <th style="padding: 10px;"><span class="lang-fr">Apprentissage Critique (AC)</span><span class="lang-en">Critical Learning (AC)</span></th>
+                                <th style="padding: 10px;"><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th>
+                                <th style="padding: 10px;"><span class="lang-fr">Preuve / Situation</span><span class="lang-en">Proof / Situation</span></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC1 - Spécifications</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Élaborer & implémenter les besoins fonctionnels.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC1 - <span class="lang-fr">Spécifications</span><span class="lang-en">Specifications</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Élaborer & implémenter les besoins fonctionnels.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Elaborate & implement functional needs.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Cahier des charges & User Stories (Projet Morpion)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Cahier des charges & User Stories (Projet Morpion)</span>
+                                    <span class="lang-en">Specs & User Stories (Tic-Tac-Toe Project)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC2 - Accessibilité & Ergonomie</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Interface utilisateur, accessibilité.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC2 - <span class="lang-fr">Accessibilité & Ergonomie</span><span class="lang-en">Accessibility & Ergonomics</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Interface utilisateur, accessibilité.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">User interface, accessibility.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Maquettes Figma (Projet Timeline)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Maquettes Figma (Projet Timeline)</span>
+                                    <span class="lang-en">Figma Mockups (Timeline Project)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC3 - Good Practices</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Code propre, architecture, Git.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC3 - <span class="lang-fr">Bonnes Pratiques</span><span class="lang-en">Good Practices</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Code propre, architecture, Git.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Clean code, architecture, Git.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Historique Git propre & Architecture MVC</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Historique Git propre & Architecture MVC</span>
+                                    <span class="lang-en">Clean Git history & MVC Architecture</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC4 - Tests</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Tests unitaires et intégration.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC4 - Tests</strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Tests unitaires et intégration.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Unit tests and integration.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Tests unitaires JUnit (Début d'automatisation)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Tests unitaires JUnit (Début d'automatisation)</span>
+                                    <span class="lang-en">JUnit Unit Tests (Start of automation)</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -169,31 +295,63 @@
             </details>
 
             <details>
-                <summary>2. OPTIMISER (Algorithmique)</summary>
+                <summary>
+                    <span class="lang-fr">2. OPTIMISER (Algorithmique)</span>
+                    <span class="lang-en">2. OPTIMIZE (Algorithmics)</span>
+                </summary>
                 <div class="year-content">
-                    <p style="margin-bottom: 15px; font-style: italic;">Sélectionner les algorithmes adéquats pour répondre à un problème.</p>
+                    <p class="lang-fr" style="margin-bottom: 15px; font-style: italic;">Sélectionner les algorithmes adéquats pour répondre à un problème.</p>
+                    <p class="lang-en" style="margin-bottom: 15px; font-style: italic;">Select adequate algorithms to solve a problem.</p>
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-main);">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;">Critère</th><th style="padding: 10px;">Niveau</th><th style="padding: 10px;">Preuve</th></tr></thead>
+                         <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;"><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th style="padding: 10px;"><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th style="padding: 10px;"><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC1 - Structures de données</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Choisir List, Map, Set, Graph...</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC1 - <span class="lang-fr">Structures de données</span><span class="lang-en">Data Structures</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Choisir List, Map, Set, Graph...</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Choose List, Map, Set, Graph...</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Comparaison ArrayList vs LinkedList (Projet Java)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Comparaison ArrayList vs LinkedList (Projet Java)</span>
+                                    <span class="lang-en">ArrayList vs LinkedList comparison (Java Project)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC2 - Algorithmes</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Complexité et performance.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC2 - <span class="lang-fr">Algorithmes</span><span class="lang-en">Algorithms</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Complexité et performance.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Complexity and performance.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Algorithme Minimax (IA Morpion)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Algorithme Minimax (IA Morpion)</span>
+                                    <span class="lang-en">Minimax Algorithm (Tic-Tac-Toe AI)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC3 - Sécurisation Algo</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Vérification des entrées.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC3 - <span class="lang-fr">Sécurisation Algo</span><span class="lang-en">Algo Security</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Vérification des entrées.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Input verification.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Gestion des exceptions et Try/Catch</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Gestion des exceptions et Try/Catch</span>
+                                    <span class="lang-en">Exception handling and Try/Catch</span>
+                                </td>
                             </tr>
                              <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC4 - Éco-conception</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Impact environnemental.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC4 - <span class="lang-fr">Éco-conception</span><span class="lang-en">Eco-design</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Impact environnemental.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Environmental impact.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Optimisation des boucles (Green IT)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Optimisation des boucles (Green IT)</span>
+                                    <span class="lang-en">Loop optimization (Green IT)</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -201,26 +359,51 @@
             </details>
 
             <details>
-                <summary>3. ADMINISTRER (Systèmes & Réseaux)</summary>
+                <summary>
+                    <span class="lang-fr">3. ADMINISTRER (Systèmes & Réseaux)</span>
+                    <span class="lang-en">3. ADMINISTER (Systems & Networks)</span>
+                </summary>
                 <div class="year-content">
-                    <p style="margin-bottom: 15px; font-style: italic;">Déployer des services dans une architecture réseau.</p>
+                    <p class="lang-fr" style="margin-bottom: 15px; font-style: italic;">Déployer des services dans une architecture réseau.</p>
+                    <p class="lang-en" style="margin-bottom: 15px; font-style: italic;">Deploy services within a network architecture.</p>
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-main);">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;">Critère</th><th style="padding: 10px;">Niveau</th><th style="padding: 10px;">Preuve</th></tr></thead>
+                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;"><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th style="padding: 10px;"><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th style="padding: 10px;"><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC1 - Applications communicantes</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Sockets, API, Client-Serveur.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC1 - <span class="lang-fr">Apps Communicantes</span><span class="lang-en">Communicating Apps</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Sockets, API, Client-Serveur.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Sockets, API, Client-Server.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Utilisation simple de Postman</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Utilisation simple de Postman</span>
+                                    <span class="lang-en">Simple use of Postman</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC2 - Déploiement</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Serveur, VM, Docker.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC2 - <span class="lang-fr">Déploiement</span><span class="lang-en">Deployment</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Serveur, VM, Docker.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Server, VM, Docker.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Déploiement local (WAMP/XAMPP)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Déploiement local (WAMP/XAMPP)</span>
+                                    <span class="lang-en">Local deployment (WAMP/XAMPP)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC3 - Sécurité Réseau</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Pare-feu, TLS, Permissions.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC3 - <span class="lang-fr">Sécurité Réseau</span><span class="lang-en">Network Security</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Pare-feu, TLS, Permissions.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Firewall, TLS, Permissions.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Configuration basique de droits Linux</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Configuration basique de droits Linux</span>
+                                    <span class="lang-en">Basic Linux rights configuration</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -228,31 +411,63 @@
             </details>
 
             <details>
-                <summary>4. GÉRER (Bases de Données)</summary>
+                <summary>
+                    <span class="lang-fr">4. GÉRER (Bases de Données)</span>
+                    <span class="lang-en">4. MANAGE (Databases)</span>
+                </summary>
                 <div class="year-content">
-                    <p style="margin-bottom: 15px; font-style: italic;">Optimiser une BDD, interagir avec une app et sécuriser.</p>
+                    <p class="lang-fr" style="margin-bottom: 15px; font-style: italic;">Optimiser une BDD, interagir avec une app et sécuriser.</p>
+                    <p class="lang-en" style="margin-bottom: 15px; font-style: italic;">Optimize a DB, interact with an app and secure it.</p>
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-main);">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;">Critère</th><th style="padding: 10px;">Niveau</th><th style="padding: 10px;">Preuve</th></tr></thead>
+                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;"><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th style="padding: 10px;"><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th style="padding: 10px;"><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC1 - Conception BDD</strong><br><span style="font-size:0.8em; color:var(--text-muted)">MCD/MLD, Normalisation.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC1 - <span class="lang-fr">Conception BDD</span><span class="lang-en">DB Design</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">MCD/MLD, Normalisation.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">CDM/LDM, Normalization.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">MCD Projet Robot Trading</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">MCD Projet Robot Trading</span>
+                                    <span class="lang-en">CDM Robot Trading Project</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC2 - SQL Avancé</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Requêtes complexes, Jointures.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC2 - <span class="lang-fr">SQL Avancé</span><span class="lang-en">Advanced SQL</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Requêtes complexes, Jointures.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Complex queries, Joins.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Scripts SQL de création et analyse</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Scripts SQL de création et analyse</span>
+                                    <span class="lang-en">Creation and analysis SQL scripts</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC3 - Connexion App</strong><br><span style="font-size:0.8em; color:var(--text-muted)">DAO, ORM, JDBC.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC3 - <span class="lang-fr">Connexion App</span><span class="lang-en">App Connection</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">DAO, ORM, JDBC.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">DAO, ORM, JDBC.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Pattern DAO en Java</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Pattern DAO en Java</span>
+                                    <span class="lang-en">DAO Pattern in Java</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC4 - Sécurité Données</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Injections SQL, Droits.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC4 - <span class="lang-fr">Sécurité Données</span><span class="lang-en">Data Security</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Injections SQL, Droits.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">SQL Injections, Rights.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: orange;">EC</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Utilisation de PreparedStatements</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Utilisation de PreparedStatements</span>
+                                    <span class="lang-en">Use of PreparedStatements</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -260,31 +475,63 @@
             </details>
 
             <details>
-                <summary>5. CONDUIRE (Gestion de Projet)</summary>
+                <summary>
+                    <span class="lang-fr">5. CONDUIRE (Gestion de Projet)</span>
+                    <span class="lang-en">5. LEAD (Project Management)</span>
+                </summary>
                 <div class="year-content">
-                    <p style="margin-bottom: 15px; font-style: italic;">Suivi de projet, besoins métiers et qualité.</p>
+                    <p class="lang-fr" style="margin-bottom: 15px; font-style: italic;">Suivi de projet, besoins métiers et qualité.</p>
+                    <p class="lang-en" style="margin-bottom: 15px; font-style: italic;">Project tracking, business needs and quality.</p>
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-main);">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;">Critère</th><th style="padding: 10px;">Niveau</th><th style="padding: 10px;">Preuve</th></tr></thead>
+                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;"><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th style="padding: 10px;"><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th style="padding: 10px;"><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC1 - Besoins Client</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Reformulation, User Stories.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC1 - <span class="lang-fr">Besoins Client</span><span class="lang-en">Client Needs</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Reformulation, User Stories.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Reformulation, User Stories.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Dossier d'analyse des besoins</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Dossier d'analyse des besoins</span>
+                                    <span class="lang-en">Needs analysis file</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC2 - Planification</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Agile, Gantt, Suivi.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC2 - <span class="lang-fr">Planification</span><span class="lang-en">Planning</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Agile, Gantt, Suivi.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Agile, Gantt, Tracking.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Utilisation de Trello / Jira</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Utilisation de Trello / Jira</span>
+                                    <span class="lang-en">Use of Trello / Jira</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC3 - Communication</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Comptes-rendus, Oral.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC3 - <span class="lang-fr">Communication</span><span class="lang-en">Communication</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Comptes-rendus, Oral.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Reports, Oral.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Présentations orales de projets</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Présentations orales de projets</span>
+                                    <span class="lang-en">Oral project presentations</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC4 - Qualité</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Indicateurs, Améliorations.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC4 - <span class="lang-fr">Qualité</span><span class="lang-en">Quality</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Indicateurs, Améliorations.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Indicators, Improvements.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Rétrospectives de fin de sprint</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Rétrospectives de fin de sprint</span>
+                                    <span class="lang-en">Sprint retrospectives</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -292,31 +539,63 @@
             </details>
 
             <details>
-                <summary>6. COLLABORER (Travail d'équipe)</summary>
+                <summary>
+                    <span class="lang-fr">6. COLLABORER (Travail d'équipe)</span>
+                    <span class="lang-en">6. COLLABORATE (Teamwork)</span>
+                </summary>
                 <div class="year-content">
-                    <p style="margin-bottom: 15px; font-style: italic;">Situer son rôle et ses missions au sein d’une équipe.</p>
+                    <p class="lang-fr" style="margin-bottom: 15px; font-style: italic;">Situer son rôle et ses missions au sein d’une équipe.</p>
+                    <p class="lang-en" style="margin-bottom: 15px; font-style: italic;">Identify one's role and missions within a team.</p>
                     <table style="width: 100%; border-collapse: collapse; color: var(--text-main);">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;">Critère</th><th style="padding: 10px;">Niveau</th><th style="padding: 10px;">Preuve</th></tr></thead>
+                        <thead><tr style="border-bottom: 1px solid var(--border-color); text-align: left;"><th style="padding: 10px;"><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th style="padding: 10px;"><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th style="padding: 10px;"><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
                         <tbody>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC1 - Rôle dans l'équipe</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Positionnement, Respect du cadre.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC1 - <span class="lang-fr">Rôle dans l'équipe</span><span class="lang-en">Role in team</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Positionnement, Respect du cadre.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Positioning, Respect for framework.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Répartition claire des tâches (Scrum)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Répartition claire des tâches (Scrum)</span>
+                                    <span class="lang-en">Clear task distribution (Scrum)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC2 - Communication Groupe</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Partage d'infos, Signalement problèmes.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC2 - <span class="lang-fr">Com. Groupe</span><span class="lang-en">Group Com.</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Partage d'infos, Signalement problèmes.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Info sharing, Problem reporting.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Participation active (Discord/Slack)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Participation active (Discord/Slack)</span>
+                                    <span class="lang-en">Active participation (Discord/Slack)</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC3 - Organisation perso</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Délais, Priorités.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC3 - <span class="lang-fr">Organisation perso</span><span class="lang-en">Personal Org</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Délais, Priorités.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Deadlines, Priorities.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Respect des délais de rendu</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Respect des délais de rendu</span>
+                                    <span class="lang-en">Respect of submission deadlines</span>
+                                </td>
                             </tr>
                             <tr style="border-bottom: 1px solid #333;">
-                                <td style="padding: 10px;"><strong>AC4 - Attitude Pro</strong><br><span style="font-size:0.8em; color:var(--text-muted)">Constructif, Engagé.</span></td>
+                                <td style="padding: 10px;">
+                                    <strong>AC4 - <span class="lang-fr">Attitude Pro</span><span class="lang-en">Pro Attitude</span></strong><br>
+                                    <span class="lang-fr" style="font-size:0.8em; color:var(--text-muted)">Constructif, Engagé.</span>
+                                    <span class="lang-en" style="font-size:0.8em; color:var(--text-muted)">Constructive, Committed.</span>
+                                </td>
                                 <td style="padding: 10px; font-weight: bold; color: var(--accent);">A</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Expérience professionnelle (Vente)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">
+                                    <span class="lang-fr">Expérience professionnelle (Vente)</span>
+                                    <span class="lang-en">Professional experience (Sales)</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -327,25 +606,55 @@
     </main>
 
     <script>
-        const toggleSwitch = document.querySelector('#checkbox');
-        const body = document.body;
+        // --- GESTION DU THEME (Dark/Light) ---
+        const themeSwitch = document.querySelector('#checkbox-theme');
         const currentTheme = localStorage.getItem('theme');
+        
         if (currentTheme) {
-            body.classList.add(currentTheme);
+            document.body.classList.add(currentTheme);
             if (currentTheme === 'light-theme') {
-                toggleSwitch.checked = true;
+                themeSwitch.checked = true;
             }
         }
-        function switchTheme(e) {
+
+        themeSwitch.addEventListener('change', function(e) {
             if (e.target.checked) {
-                body.classList.add('light-theme');
+                document.body.classList.add('light-theme');
                 localStorage.setItem('theme', 'light-theme');
             } else {
-                body.classList.remove('light-theme');
+                document.body.classList.remove('light-theme');
                 localStorage.setItem('theme', 'dark-theme');
             }
+        });
+
+        // --- GESTION DE LA LANGUE (FR/EN) ---
+        const langSwitch = document.querySelector('#checkbox-lang');
+        const currentLang = localStorage.getItem('lang');
+        const htmlTag = document.documentElement; // La balise <html>
+
+        // 1. Au chargement, on applique la langue sauvegardée
+        if (currentLang) {
+            htmlTag.setAttribute('lang', currentLang);
+            if (currentLang === 'en') {
+                langSwitch.checked = true; // Switch à droite
+            }
+        } else {
+            // Par défaut c'est FR, on s'assure que c'est bien mis
+            htmlTag.setAttribute('lang', 'fr');
         }
-        toggleSwitch.addEventListener('change', switchTheme, false);
+
+        // 2. Au changement du switch
+        langSwitch.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                // Mode EN
+                htmlTag.setAttribute('lang', 'en');
+                localStorage.setItem('lang', 'en');
+            } else {
+                // Mode FR
+                htmlTag.setAttribute('lang', 'fr');
+                localStorage.setItem('lang', 'fr');
+            }
+        });
     </script>
 
 </body>
