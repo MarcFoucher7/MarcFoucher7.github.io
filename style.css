@@ -202,3 +202,21 @@ input:checked + .slider::before { transform: translateX(24px); }
 /* Quand on passe en mode clair */
 input:checked ~ .slider .icon-moon { opacity: 0; }
 input:checked ~ .slider .icon-sun { opacity: 1; }
+
+/* --- AJOUTS POUR LES IMAGES --- */
+.avatar-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; /* Ça évite que ta tête soit écrasée si l'image n'est pas carrée */
+    border: 3px solid var(--accent); /* Un petit bord vert sympa */
+    flex-shrink: 0;
+}
+
+.project-img {
+    width: 100%;
+    aspect-ratio: 16/9; /* Format rectangulaire standard */
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
