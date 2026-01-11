@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="mobile-nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <div class="mobile-nav-overlay"></div>
 
     <nav class="sidebar">
         <div class="logo">
@@ -359,6 +366,29 @@
                 htmlTag.setAttribute('lang', 'fr');
                 localStorage.setItem('lang', 'fr');
             }
+        });
+
+        // --- GESTION DU MENU MOBILE (Nouveau) ---
+        const menuBtn = document.querySelector('.mobile-nav-toggle');
+        const overlay = document.querySelector('.mobile-nav-overlay');
+        // On sélectionne aussi les liens pour fermer le menu quand on clique dessus
+        const navLinksMobile = document.querySelectorAll('.nav-links a');
+
+        function toggleMenu() {
+            document.body.classList.toggle('mobile-active');
+        }
+
+        // Clic sur le burger
+        if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+        
+        // Clic sur le fond sombre (pour fermer)
+        if(overlay) overlay.addEventListener('click', toggleMenu);
+
+        // Clic sur un lien (pour fermer automatiquement le menu après choix)
+        navLinksMobile.forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('mobile-active');
+            });
         });
     </script>
 
