@@ -3,7 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { MathUtils, Vector3, type Group } from 'three';
 import { SCREEN } from './config';
 import { computeLayout, type RigLayout } from './layout';
-import { rigState } from './rig';
+import { rigState } from './stream';
 import { scrollState } from '../store/scroll';
 import { ClientScreen, type ClientScreenHandle } from './objects/ClientScreen';
 import { PacketStream } from './objects/PacketStream';

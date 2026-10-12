@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Color, MathUtils, type Mesh } from 'three';
 import { COLORS, PACKET_TRAVEL } from '../config';
-import { pointOnStream } from '../rig';
+import { pointOnStream } from '../stream';
 import { useApp, type SyncedState } from '../../store/app';
 
 interface StatePacketProps {

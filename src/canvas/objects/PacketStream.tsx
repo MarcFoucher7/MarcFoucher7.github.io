@@ -2,7 +2,7 @@ import { useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Color, Matrix4, Quaternion, Vector3, type InstancedMesh } from 'three';
 import { COLORS, STREAM_COUNT } from '../config';
-import { pointOnStream, rigState } from '../rig';
+import { pointOnStream, rigState } from '../stream';
 
 interface PacketStreamProps {
   scale: number;

@@ -71,7 +71,7 @@ src/
     Scene.tsx        # lumières + lignes de code affichées par A et B
     Rig.tsx          # disposition des clients selon le scroll, ancrages du flux
     layout.ts        # calcul pur de la disposition (desktop / mobile, hero / contenu)
-    rig.ts           # état mutable partagé du flux (courbe de Bézier)
+    stream.ts        # état mutable partagé du flux (courbe de Bézier)
     objects/         # ClientScreen, CodeLines, PacketStream, StatePacket
     effects/         # Bloom (sombre + grand écran uniquement)
     config.ts        # couleurs, dimensions, durées
