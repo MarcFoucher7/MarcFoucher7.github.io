@@ -1,0 +1,46 @@
+{
+  "name": "marcfoucher7-portfolio",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@fontsource-variable/schibsted-grotesk": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "9.122.0",
+    "@react-three/fiber": "8.18.0",
+    "@react-three/postprocessing": "2.19.1",
+    "gsap": "3.13.0",
+    "lenis": "1.3.26",
+    "maath": "0.10.8",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.169.0",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.20.5",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "@types/three": "0.169.0",
+    "@vitejs/plugin-react": "4.3.4",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-react-refresh": "0.4.16",
+    "globals": "15.14.0",
+    "prettier": "3.4.2",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.18.2",
+    "vite": "5.4.21",
+    "vite-plugin-glsl": "1.3.1"
+  }
+}

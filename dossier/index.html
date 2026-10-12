@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dossier académique S3, Marc Foucher</title>
+    <meta name="description" content="Dossier académique de Marc Foucher (BUT Informatique, IUT de Laval) : analyse réflexive, objectifs et validation des compétences." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var get = function (k) {
+          try {
+            return localStorage.getItem(k);
+          } catch (e) {
+            return null;
+          }
+        };
+        var param = new URLSearchParams(location.search).get('lang');
+        var lang = param === 'en' || param === 'fr' ? param : get('lang');
+        root.lang = lang === 'en' ? 'en' : 'fr';
+        var theme = get('theme');
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        root.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body class="dossier">
+    <a class="skip-link" href="#contenu"><span class="lang-fr">Aller au contenu</span><span class="lang-en">Skip to content</span></a>
+    <header class="nav">
+      <nav class="nav__inner" aria-label="Navigation">
+        <a class="nav__brand" href="/">
+          <span class="lang-fr">Portfolio de Marc Foucher</span><span class="lang-en">Marc Foucher's portfolio</span>
+        </a>
+        <ul class="nav__links">
+          <li><a href="#reflexion"><span class="lang-fr">Réflexion</span><span class="lang-en">Reflection</span></a></li>
+          <li><a href="#objectifs"><span class="lang-fr">Objectifs</span><span class="lang-en">Goals</span></a></li>
+          <li><a href="#grilles"><span class="lang-fr">Grille S3</span><span class="lang-en">S3 matrix</span></a></li>
+          <li><a href="#grilles-s4"><span class="lang-fr">Grille S4</span><span class="lang-en">S4 matrix</span></a></li>
+        </ul>
+        <div class="nav__tools">
+          <button type="button" class="icon-btn" data-toggle="lang">
+            <span class="lang-fr" lang="en">EN</span><span class="lang-en" lang="fr">FR</span>
+          </button>
+          <button type="button" class="icon-btn" data-toggle="theme" aria-label="Thème">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main id="contenu" class="dossier__main" tabindex="-1">
+<section id="header-dossier">
+<h1>
+<span class="lang-fr">Dossier Académique - Semestre 3</span>
+<span class="lang-en">Academic File - Semester 3</span>
+</h1>
+<p class="lang-fr muted">Analyse réflexive, objectifs et validation des compétences.</p>
+<p class="lang-en muted">Reflective analysis, goals, and skills validation.</p>
+</section>
+<section id="reflexion">
+<h2>
+<span class="lang-fr">1. Projection &amp; Recherche de stage</span>
+<span class="lang-en">1. Projection &amp; Internship Search</span>
+</h2>
+<div class="grid-container">
+<div class="callout callout--strong">
+<h4>
+
+<span class="lang-fr">Forces (Interne)</span>
+<span class="lang-en">Strengths (Internal)</span>
+</h4>
+<ul>
+<li>
+<strong><span class="lang-fr">Savoir-Être :</span><span class="lang-en">Soft Skills:</span></strong>
+<span class="lang-fr">Aisance relationnelle et autonomie acquises via 5 ans de vente sur les marchés.</span>
+<span class="lang-en">Interpersonal skills and autonomy acquired through 5 years of market sales.</span>
+</li>
+<li>
+<strong><span class="lang-fr">Savoir-Faire :</span><span class="lang-en">Hard Skills:</span></strong>
+<span class="lang-fr">Solides bases en POO (Java) et architecture MVC.</span>
+<span class="lang-en">Solid foundations in OOP (Java) and MVC architecture.</span>
+</li>
+<li>
+<strong><span class="lang-fr">Langue :</span><span class="lang-en">Language:</span></strong>
+<span class="lang-fr">Bon niveau d'anglais technique et conversationnel.</span>
+<span class="lang-en">Good level of technical and conversational English.</span>
+</li>
+</ul>
+</div>
+<div class="callout callout--weak">
+<h4>
+
+<span class="lang-fr">Faiblesses &amp; Outils de Remédiation</span>
+<span class="lang-en">Weaknesses &amp; Remediation Tools</span>
+</h4>
+<ul>
+<li>
+<strong>1. <span class="lang-fr">Administration &amp; Réseaux</span><span class="lang-en">Administration &amp; Networks</span></strong><br/>
+<span class="muted">
+                                     <em>Action :</em>
+<span class="lang-fr">Refaire les TP de base (Adressage IP, VLANs).</span>
+<span class="lang-en">Redo basic labs (IP addressing, VLANs).</span><br/>
+                                     <em><span class="lang-fr">Outils :</span><span class="lang-en">Tools:</span></em> 
+                                    Cisco Packet Tracer + YouTube (ex: Pierre Giraud).
+                                </span>
+</li>
+<li>
+<strong>2. <span class="lang-fr">Veille Technologique (Irrégulière)</span><span class="lang-en">Tech Watch (Irregular)</span></strong><br/>
+<span class="muted">
+                                     <em>Action :</em>
+<span class="lang-fr">Centraliser mes sources d'infos.</span>
+<span class="lang-en">Centralize my info sources.</span><br/>
+                                     <em><span class="lang-fr">Outils :</span><span class="lang-en">Tools:</span></em> 
+                                    RSS (Feedly) + Newsletter "Dev.to".
+                                </span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="objectifs">
+<h2>
+<span class="lang-fr">2. Objectifs S3 : Culture &amp; Langue</span>
+<span class="lang-en">2. S3 Goals: Culture &amp; Language</span>
+</h2>
+<p class="lang-fr muted">Suivi de mes objectifs personnels et académiques pour le semestre.</p>
+<p class="lang-en muted">Tracking my personal and academic goals for the semester.</p>
+<div class="grid-container">
+<div class="card">
+<h3>
+<span class="lang-fr">Orthographe</span><span class="lang-en">Spelling</span> 
+</h3>
+<p>
+<span class="lang-fr">Plateforme Écrit+</span><span class="lang-en">Écrit+ Platform</span>
+</p>
+<div class="meter">
+<div class="meter__fill" style="width: 95%"></div>
+</div>
+<ul class="muted">
+<li>
+<strong><span class="lang-fr">Score actuel :</span><span class="lang-en">Current score:</span></strong> 715 points
+                        </li>
+<li>
+<strong><span class="lang-fr">Objectif cible :</span><span class="lang-en">Target goal:</span></strong> 720 points
+                        </li>
+<li>
+<strong>Action :</strong>
+<span class="lang-fr">Pratique hebdomadaire sur Écrit+</span>
+<span class="lang-en">Weekly practice on Écrit+</span>
+</li>
+</ul>
+</div>
+<div class="card">
+<h3>
+<span class="lang-fr">Culture &amp; Sociologie</span><span class="lang-en">Culture &amp; Sociology</span> 
+</h3>
+<p>
+<span class="lang-fr">Les interactions sociales</span><span class="lang-en">Social interactions</span>
+</p>
+<ul class="muted">
+<li>
+<strong><span class="lang-fr">Auteur d'étude :</span><span class="lang-en">Author of study:</span></strong> Erving Goffman
+                        </li>
+<li>
+<strong><span class="lang-fr">Sujet :</span><span class="lang-en">Topic:</span></strong>
+<span class="lang-fr">Analyse des interactions et de la "mise en scène" sociale.</span>
+<span class="lang-en">Analysis of interactions and social "staging".</span>
+</li>
+<li>
+<strong><span class="lang-fr">But :</span><span class="lang-en">Goal:</span></strong>
+<span class="lang-fr">Mieux comprendre les codes sociaux en entreprise.</span>
+<span class="lang-en">Better understand social codes in business.</span>
+</li>
+</ul>
+</div>
+<div class="card">
+<h3>
+<span class="lang-fr">Couture &amp; Textiles</span><span class="lang-en">Sewing &amp; Textiles</span> 
+</h3>
+<p>
+<span class="lang-fr">Exploration des différents tissus</span><span class="lang-en">Exploration of different fabrics</span>
+</p>
+<div class="meter">
+<div class="meter__fill" style="width: 100%"></div>
+</div>
+<ul class="muted">
+<li>
+<strong><span class="lang-fr">Propriétés :</span><span class="lang-en">Properties:</span></strong>
+<span class="lang-fr">Maîtrise des matières (lin, soie, etc...)</span>
+<span class="lang-en">Mastery of fabrics (linen, silk, etc...)</span>
+</li>
+<li>
+<strong><span class="lang-fr">Technique :</span><span class="lang-en">Technique:</span></strong>
+<span class="lang-fr">Apprentissage de la couture, des points de couture selon les différentes matières</span>
+<span class="lang-en">Learning assembly and hand stitches according to different fabrics</span>
+</li>
+<li>
+<strong>Action :</strong>
+<span class="lang-fr">Réalisation d'un ABCDAIRE textile/entreprise</span>
+<span class="lang-en">Creating an ABCDAIRE textile/business</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="grilles">
+<h2>
+<span class="lang-fr">3. Validation des Compétences (Semestre 3)</span>
+<span class="lang-en">3. Skills Validation (Semester 3)</span>
+</h2>
+<p class="muted">
+<span class="lang-fr">Auto-évaluation basée sur le référentiel du BUT Informatique.</span>
+<span class="lang-en">Self-assessment based on the BUT Computer Science reference framework.</span>
+<br/>
+<small>
+<span class="lang-fr">Légende : <strong class="level level--na">NA</strong> (Non Acquis), <strong class="level level--ec">EC</strong> (En Cours), <strong class="level level--a">A</strong> (Acquis)</span>
+<span class="lang-en">Legend: <strong class="level level--na">NA</strong> (Not Acquired), <strong class="level level--ec">EC</strong> (In Progress), <strong class="level level--a">A</strong> (Acquired)</span>
+</small>
+</p>
+<details open="">
+<summary>
+<span class="lang-fr">1. RÉALISER (Développement d'applications)</span>
+<span class="lang-en">1. REALIZE (Application Development)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Partir des exigences et aller jusqu’à une application complète.</p>
+<p class="lang-en intro">From requirements to a complete application.</p>
+<table>
+<thead>
+<tr>
+<th><span class="lang-fr">Apprentissage Critique (AC)</span><span class="lang-en">Critical Learning (AC)</span></th>
+<th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th>
+<th><span class="lang-fr">Preuve / Situation</span><span class="lang-en">Proof / Situation</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Spécifications</span><span class="lang-en">Specifications</span></strong><br/>
+<span class="lang-fr note">Élaborer &amp; implémenter les besoins fonctionnels.</span>
+<span class="lang-en note">Elaborate &amp; implement functional needs.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Cahier des charges &amp; User Stories (Projet Morpion)</span>
+<span class="lang-en">Specs &amp; User Stories (Tic-Tac-Toe Project)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Accessibilité &amp; Ergonomie</span><span class="lang-en">Accessibility &amp; Ergonomics</span></strong><br/>
+<span class="lang-fr note">Interface utilisateur, accessibilité.</span>
+<span class="lang-en note">User interface, accessibility.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Maquettes Figma (Projet Timeline)</span>
+<span class="lang-en">Figma Mockups (Timeline Project)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Bonnes Pratiques</span><span class="lang-en">Good Practices</span></strong><br/>
+<span class="lang-fr note">Code propre, architecture, Git.</span>
+<span class="lang-en note">Clean code, architecture, Git.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Historique Git propre &amp; Architecture MVC</span>
+<span class="lang-en">Clean Git history &amp; MVC Architecture</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - Tests</strong><br/>
+<span class="lang-fr note">Tests unitaires et intégration.</span>
+<span class="lang-en note">Unit tests and integration.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Tests unitaires JUnit (Début d'automatisation)</span>
+<span class="lang-en">JUnit Unit Tests (Start of automation)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">2. OPTIMISER (Algorithmique)</span>
+<span class="lang-en">2. OPTIMIZE (Algorithmics)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Sélectionner les algorithmes adéquats pour répondre à un problème.</p>
+<p class="lang-en intro">Select adequate algorithms to solve a problem.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Structures de données</span><span class="lang-en">Data Structures</span></strong><br/>
+<span class="lang-fr note">Choisir List, Map, Set, Graph...</span>
+<span class="lang-en note">Choose List, Map, Set, Graph...</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Comparaison ArrayList vs LinkedList (Projet Java)</span>
+<span class="lang-en">ArrayList vs LinkedList comparison (Java Project)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Algorithmes</span><span class="lang-en">Algorithms</span></strong><br/>
+<span class="lang-fr note">Complexité et performance.</span>
+<span class="lang-en note">Complexity and performance.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Algorithme Minimax (IA Morpion)</span>
+<span class="lang-en">Minimax Algorithm (Tic-Tac-Toe AI)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Sécurisation Algo</span><span class="lang-en">Algo Security</span></strong><br/>
+<span class="lang-fr note">Vérification des entrées.</span>
+<span class="lang-en note">Input verification.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Gestion des exceptions et Try/Catch</span>
+<span class="lang-en">Exception handling and Try/Catch</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Éco-conception</span><span class="lang-en">Eco-design</span></strong><br/>
+<span class="lang-fr note">Impact environnemental.</span>
+<span class="lang-en note">Environmental impact.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Optimisation des boucles (Green IT)</span>
+<span class="lang-en">Loop optimization (Green IT)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">3. ADMINISTRER (Systèmes &amp; Réseaux)</span>
+<span class="lang-en">3. ADMINISTER (Systems &amp; Networks)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Déployer des services dans une architecture réseau.</p>
+<p class="lang-en intro">Deploy services within a network architecture.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Apps Communicantes</span><span class="lang-en">Communicating Apps</span></strong><br/>
+<span class="lang-fr note">Sockets, API, Client-Serveur.</span>
+<span class="lang-en note">Sockets, API, Client-Server.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Utilisation simple de Postman</span>
+<span class="lang-en">Simple use of Postman</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Déploiement</span><span class="lang-en">Deployment</span></strong><br/>
+<span class="lang-fr note">Serveur, VM, Docker.</span>
+<span class="lang-en note">Server, VM, Docker.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Déploiement local (WAMP/XAMPP)</span>
+<span class="lang-en">Local deployment (WAMP/XAMPP)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Sécurité Réseau</span><span class="lang-en">Network Security</span></strong><br/>
+<span class="lang-fr note">Pare-feu, TLS, Permissions.</span>
+<span class="lang-en note">Firewall, TLS, Permissions.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Configuration basique de droits Linux</span>
+<span class="lang-en">Basic Linux rights configuration</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">4. GÉRER (Bases de Données)</span>
+<span class="lang-en">4. MANAGE (Databases)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Optimiser une BDD, interagir avec une app et sécuriser.</p>
+<p class="lang-en intro">Optimize a DB, interact with an app and secure it.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Conception BDD</span><span class="lang-en">DB Design</span></strong><br/>
+<span class="lang-fr note">MCD/MLD, Normalisation.</span>
+<span class="lang-en note">CDM/LDM, Normalization.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">MCD Projet Robot Trading</span>
+<span class="lang-en">CDM Robot Trading Project</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">SQL Avancé</span><span class="lang-en">Advanced SQL</span></strong><br/>
+<span class="lang-fr note">Requêtes complexes, Jointures.</span>
+<span class="lang-en note">Complex queries, Joins.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Scripts SQL de création et analyse</span>
+<span class="lang-en">Creation and analysis SQL scripts</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Connexion App</span><span class="lang-en">App Connection</span></strong><br/>
+<span class="lang-fr note">DAO, ORM, JDBC.</span>
+<span class="lang-en note">DAO, ORM, JDBC.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Pattern DAO en Java</span>
+<span class="lang-en">DAO Pattern in Java</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Sécurité Données</span><span class="lang-en">Data Security</span></strong><br/>
+<span class="lang-fr note">Injections SQL, Droits.</span>
+<span class="lang-en note">SQL Injections, Rights.</span>
+</td>
+<td class="level level--ec">EC</td>
+<td class="muted">
+<span class="lang-fr">Utilisation de PreparedStatements</span>
+<span class="lang-en">Use of PreparedStatements</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">5. CONDUIRE (Gestion de Projet)</span>
+<span class="lang-en">5. LEAD (Project Management)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Suivi de projet, besoins métiers et qualité.</p>
+<p class="lang-en intro">Project tracking, business needs and quality.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Besoins Client</span><span class="lang-en">Client Needs</span></strong><br/>
+<span class="lang-fr note">Reformulation, User Stories.</span>
+<span class="lang-en note">Reformulation, User Stories.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Dossier d'analyse des besoins</span>
+<span class="lang-en">Needs analysis file</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Planification</span><span class="lang-en">Planning</span></strong><br/>
+<span class="lang-fr note">Agile, Gantt, Suivi.</span>
+<span class="lang-en note">Agile, Gantt, Tracking.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Utilisation de Trello / Jira</span>
+<span class="lang-en">Use of Trello / Jira</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Communication</span><span class="lang-en">Communication</span></strong><br/>
+<span class="lang-fr note">Comptes-rendus, Oral.</span>
+<span class="lang-en note">Reports, Oral.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Présentations orales de projets</span>
+<span class="lang-en">Oral project presentations</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Qualité</span><span class="lang-en">Quality</span></strong><br/>
+<span class="lang-fr note">Indicateurs, Améliorations.</span>
+<span class="lang-en note">Indicators, Improvements.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Rétrospectives de fin de sprint</span>
+<span class="lang-en">Sprint retrospectives</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">6. COLLABORER (Travail d'équipe)</span>
+<span class="lang-en">6. COLLABORATE (Teamwork)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Situer son rôle et ses missions au sein d’une équipe.</p>
+<p class="lang-en intro">Identify one's role and missions within a team.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Rôle dans l'équipe</span><span class="lang-en">Role in team</span></strong><br/>
+<span class="lang-fr note">Positionnement, Respect du cadre.</span>
+<span class="lang-en note">Positioning, Respect for framework.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Répartition claire des tâches (Scrum)</span>
+<span class="lang-en">Clear task distribution (Scrum)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Com. Groupe</span><span class="lang-en">Group Com.</span></strong><br/>
+<span class="lang-fr note">Partage d'infos, Signalement problèmes.</span>
+<span class="lang-en note">Info sharing, Problem reporting.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Participation active (Discord/Slack)</span>
+<span class="lang-en">Active participation (Discord/Slack)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Organisation perso</span><span class="lang-en">Personal Org</span></strong><br/>
+<span class="lang-fr note">Délais, Priorités.</span>
+<span class="lang-en note">Deadlines, Priorities.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Respect des délais de rendu</span>
+<span class="lang-en">Respect of submission deadlines</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Attitude Pro</span><span class="lang-en">Pro Attitude</span></strong><br/>
+<span class="lang-fr note">Constructif, Engagé.</span>
+<span class="lang-en note">Constructive, Committed.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Expérience professionnelle (Vente)</span>
+<span class="lang-en">Professional experience (Sales)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</section>
+<section id="grilles-s4">
+<h2>
+<span class="lang-fr">4. Validation des Compétences (Semestre 4)</span>
+<span class="lang-en">4. Skills Validation (Semester 4)</span>
+</h2>
+<p class="muted">
+<span class="lang-fr">Évolution et consolidation des acquis en vue du stage de fin d'année.</span>
+<span class="lang-en">Evolution and consolidation of skills in preparation for the end-of-year internship.</span>
+<br/>
+<small>
+<span class="lang-fr">Légende : <strong class="level level--na">NA</strong> (Non Acquis), <strong class="level level--ec">EC</strong> (En Cours), <strong class="level level--a">A</strong> (Acquis)</span>
+<span class="lang-en">Legend: <strong class="level level--na">NA</strong> (Not Acquired), <strong class="level level--ec">EC</strong> (In Progress), <strong class="level level--a">A</strong> (Acquired)</span>
+</small>
+</p>
+<details>
+<summary>
+<span class="lang-fr">1. RÉALISER (Développement d'applications)</span>
+<span class="lang-en">1. REALIZE (Application Development)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Partir des exigences et aller jusqu’à une application complète.</p>
+<p class="lang-en intro">From requirements to a complete application.</p>
+<table>
+<thead>
+<tr>
+<th><span class="lang-fr">Apprentissage Critique (AC)</span><span class="lang-en">Critical Learning (AC)</span></th>
+<th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th>
+<th><span class="lang-fr">Preuve / Situation</span><span class="lang-en">Proof / Situation</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Spécifications</span><span class="lang-en">Specifications</span></strong><br/>
+<span class="lang-fr note">Élaborer &amp; implémenter les besoins fonctionnels.</span>
+<span class="lang-en note">Elaborate &amp; implement functional needs.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Conception et validation de cahier des charges technique</span>
+<span class="lang-en">Design and validation of technical specifications</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Accessibilité &amp; Ergonomie</span><span class="lang-en">Accessibility &amp; Ergonomics</span></strong><br/>
+<span class="lang-fr note">Interface utilisateur, accessibilité.</span>
+<span class="lang-en note">User interface, accessibility.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Prototypes interactifs avancés et tests utilisateurs</span>
+<span class="lang-en">Advanced interactive prototypes and user testing</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Bonnes Pratiques</span><span class="lang-en">Good Practices</span></strong><br/>
+<span class="lang-fr note">Code propre, architecture, Git.</span>
+<span class="lang-en note">Clean code, architecture, Git.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Gitflow, Pull Requests et Code Review systématique</span>
+<span class="lang-en">Gitflow, Pull Requests and systematic Code Review</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - Tests</strong><br/>
+<span class="lang-fr note">Tests unitaires et intégration.</span>
+<span class="lang-en note">Unit tests and integration.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Automatisation via pipeline CI/CD (GitLab CI/GitHub Actions)</span>
+<span class="lang-en">Automation via CI/CD pipeline (GitLab CI/GitHub Actions)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">2. OPTIMISER (Algorithmique)</span>
+<span class="lang-en">2. OPTIMIZE (Algorithmics)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Sélectionner les algorithmes adéquats pour répondre à un problème.</p>
+<p class="lang-en intro">Select adequate algorithms to solve a problem.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Structures de données</span><span class="lang-en">Data Structures</span></strong><br/>
+<span class="lang-fr note">Choisir List, Map, Set, Graph...</span>
+<span class="lang-en note">Choose List, Map, Set, Graph...</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Implémentation d'arbres et graphes pour optimisation</span>
+<span class="lang-en">Implementation of trees and graphs for optimization</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Algorithmes</span><span class="lang-en">Algorithms</span></strong><br/>
+<span class="lang-fr note">Complexité et performance.</span>
+<span class="lang-en note">Complexity and performance.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Analyse et réduction de la complexité temporelle O(n)</span>
+<span class="lang-en">Analysis and reduction of time complexity O(n)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Sécurisation Algo</span><span class="lang-en">Algo Security</span></strong><br/>
+<span class="lang-fr note">Vérification des entrées.</span>
+<span class="lang-en note">Input verification.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Validation stricte des payloads et audit de sécurité</span>
+<span class="lang-en">Strict payload validation and security audit</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Éco-conception</span><span class="lang-en">Eco-design</span></strong><br/>
+<span class="lang-fr note">Impact environnemental.</span>
+<span class="lang-en note">Environmental impact.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Refactoring de code pour réduction de la dette technique/énergétique</span>
+<span class="lang-en">Code refactoring to reduce technical/energy debt</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">3. ADMINISTRER (Systèmes &amp; Réseaux)</span>
+<span class="lang-en">3. ADMINISTER (Systems &amp; Networks)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Déployer des services dans une architecture réseau.</p>
+<p class="lang-en intro">Deploy services within a network architecture.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Apps Communicantes</span><span class="lang-en">Communicating Apps</span></strong><br/>
+<span class="lang-fr note">Sockets, API, Client-Serveur.</span>
+<span class="lang-en note">Sockets, API, Client-Server.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Développement et consommation d'une API RESTful</span>
+<span class="lang-en">Development and consumption of a RESTful API</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Déploiement</span><span class="lang-en">Deployment</span></strong><br/>
+<span class="lang-fr note">Serveur, VM, Docker.</span>
+<span class="lang-en note">Server, VM, Docker.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Déploiement conteneurisé via Docker sur VPS Linux</span>
+<span class="lang-en">Containerized deployment via Docker on Linux VPS</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Sécurité Réseau</span><span class="lang-en">Network Security</span></strong><br/>
+<span class="lang-fr note">Pare-feu, TLS, Permissions.</span>
+<span class="lang-en note">Firewall, TLS, Permissions.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Mise en place de certificats SSL/TLS et pare-feu (UFW)</span>
+<span class="lang-en">Implementation of SSL/TLS certificates and firewall (UFW)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">4. GÉRER (Bases de Données)</span>
+<span class="lang-en">4. MANAGE (Databases)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Optimiser une BDD, interagir avec une app et sécuriser.</p>
+<p class="lang-en intro">Optimize a DB, interact with an app and secure it.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Conception BDD</span><span class="lang-en">DB Design</span></strong><br/>
+<span class="lang-fr note">MCD/MLD, Normalisation.</span>
+<span class="lang-en note">CDM/LDM, Normalization.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Modélisation complexe avec contraintes d'intégrité fortes</span>
+<span class="lang-en">Complex modeling with strong integrity constraints</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">SQL Avancé</span><span class="lang-en">Advanced SQL</span></strong><br/>
+<span class="lang-fr note">Requêtes complexes, Jointures.</span>
+<span class="lang-en note">Complex queries, Joins.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Procédures stockées, triggers et vues optimisées</span>
+<span class="lang-en">Stored procedures, triggers and optimized views</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Connexion App</span><span class="lang-en">App Connection</span></strong><br/>
+<span class="lang-fr note">DAO, ORM, JDBC.</span>
+<span class="lang-en note">DAO, ORM, JDBC.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Intégration d'un ORM robuste (JPA/Hibernate, Prisma...)</span>
+<span class="lang-en">Integration of a robust ORM (JPA/Hibernate, Prisma...)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Sécurité Données</span><span class="lang-en">Data Security</span></strong><br/>
+<span class="lang-fr note">Injections SQL, Droits.</span>
+<span class="lang-en note">SQL Injections, Rights.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Système d'authentification (JWT), hashage fort des mots de passe</span>
+<span class="lang-en">Authentication system (JWT), strong password hashing</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">5. CONDUIRE (Gestion de Projet)</span>
+<span class="lang-en">5. LEAD (Project Management)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Suivi de projet, besoins métiers et qualité.</p>
+<p class="lang-en intro">Project tracking, business needs and quality.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Besoins Client</span><span class="lang-en">Client Needs</span></strong><br/>
+<span class="lang-fr note">Reformulation, User Stories.</span>
+<span class="lang-en note">Reformulation, User Stories.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Gestion complète du Backlog Produit en équipe</span>
+<span class="lang-en">Complete Product Backlog management in a team</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Planification</span><span class="lang-en">Planning</span></strong><br/>
+<span class="lang-fr note">Agile, Gantt, Suivi.</span>
+<span class="lang-en note">Agile, Gantt, Tracking.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Animation de cérémonies Scrum (Daily, Sprint Planning)</span>
+<span class="lang-en">Facilitating Scrum ceremonies (Daily, Sprint Planning)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Communication</span><span class="lang-en">Communication</span></strong><br/>
+<span class="lang-fr note">Comptes-rendus, Oral.</span>
+<span class="lang-en note">Reports, Oral.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Pitch professionnel et documentation utilisateur finale</span>
+<span class="lang-en">Professional pitch and final user documentation</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Qualité</span><span class="lang-en">Quality</span></strong><br/>
+<span class="lang-fr note">Indicateurs, Améliorations.</span>
+<span class="lang-en note">Indicators, Improvements.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Mise en place de métriques (SonarQube) et respect des conventions</span>
+<span class="lang-en">Setup of metrics (SonarQube) and adherence to conventions</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<details>
+<summary>
+<span class="lang-fr">6. COLLABORER (Travail d'équipe)</span>
+<span class="lang-en">6. COLLABORATE (Teamwork)</span>
+</summary>
+<div class="year-content">
+<p class="lang-fr intro">Situer son rôle et ses missions au sein d’une équipe.</p>
+<p class="lang-en intro">Identify one's role and missions within a team.</p>
+<table>
+<thead><tr><th><span class="lang-fr">Critère</span><span class="lang-en">Criteria</span></th><th><span class="lang-fr">Niveau</span><span class="lang-en">Level</span></th><th><span class="lang-fr">Preuve</span><span class="lang-en">Proof</span></th></tr></thead>
+<tbody>
+<tr>
+<td>
+<strong>AC1 - <span class="lang-fr">Rôle dans l'équipe</span><span class="lang-en">Role in team</span></strong><br/>
+<span class="lang-fr note">Positionnement, Respect du cadre.</span>
+<span class="lang-en note">Positioning, Respect for framework.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Rôle de Scrum Master / Tech Lead sur un projet majeur</span>
+<span class="lang-en">Role of Scrum Master / Tech Lead on a major project</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC2 - <span class="lang-fr">Com. Groupe</span><span class="lang-en">Group Com.</span></strong><br/>
+<span class="lang-fr note">Partage d'infos, Signalement problèmes.</span>
+<span class="lang-en note">Info sharing, Problem reporting.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Pair programming régulier et résolution de conflits Git complexes</span>
+<span class="lang-en">Regular pair programming and resolving complex Git conflicts</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC3 - <span class="lang-fr">Organisation perso</span><span class="lang-en">Personal Org</span></strong><br/>
+<span class="lang-fr note">Délais, Priorités.</span>
+<span class="lang-en note">Deadlines, Priorities.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Capacité d'adaptation face aux changements de specs en cours de sprint</span>
+<span class="lang-en">Adaptability to spec changes during a sprint</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>AC4 - <span class="lang-fr">Attitude Pro</span><span class="lang-en">Pro Attitude</span></strong><br/>
+<span class="lang-fr note">Constructif, Engagé.</span>
+<span class="lang-en note">Constructive, Committed.</span>
+</td>
+<td class="level level--a">A</td>
+<td class="muted">
+<span class="lang-fr">Accompagnement et mentorat des autres membres de l'équipe</span>
+<span class="lang-en">Coaching and mentoring other team members</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</section>
+    </main>
+    <footer class="footer">
+      <div class="footer__inner">
+        <span>© 2026 Marc Foucher</span>
+        <a class="text-link" href="/"><span class="lang-fr">Retour au portfolio</span><span class="lang-en">Back to portfolio</span></a>
+      </div>
+    </footer>
+    <script type="module" src="/src/dossier/main.ts"></script>
+  </body>
+</html>
