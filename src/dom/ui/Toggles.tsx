@@ -1,56 +1,36 @@
 import { useT } from '../../i18n';
 import { useApp } from '../../store/app';
 
-/** Bascule FR / EN. */
-export function LangToggle() {
+/** Bascule FR / EN : affiche la langue cible. */
+export function LangToggle({ className = '' }: { className?: string }) {
   const t = useT();
   const lang = useApp((s) => s.lang);
   const setLang = useApp((s) => s.setLang);
   const next = lang === 'fr' ? 'en' : 'fr';
   return (
-    <button type="button" className="icon-btn" onClick={() => setLang(next)} lang={next}>
+    <button type="button" className={className} onClick={() => setLang(next)} lang={next}>
       {next.toUpperCase()}
       <span className="visually-hidden">, {t.toggles.langLabel}</span>
     </button>
   );
 }
 
-/** Bascule thème clair / sombre. */
-export function ThemeToggle() {
+/** Bascule thème sombre / clair. */
+export function ThemeToggle({ className = '' }: { className?: string }) {
   const t = useT();
   const theme = useApp((s) => s.theme);
   const toggleTheme = useApp((s) => s.toggleTheme);
-  const isDark = theme === 'dark';
+  const dark = theme === 'dark';
   return (
     <button
       type="button"
-      className="icon-btn"
+      className={className}
       onClick={toggleTheme}
-      aria-label={isDark ? t.toggles.themeToLight : t.toggles.themeToDark}
-      title={isDark ? t.toggles.light : t.toggles.dark}
+      aria-label={dark ? t.toggles.themeToLight : t.toggles.themeToDark}
     >
-      {isDark ? (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="4.2" />
-          <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" />
-        </svg>
-      ) : (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-          <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />
-        </svg>
-      )}
+      <span aria-hidden="true">
+        {t.menu.theme} : {dark ? t.menu.themeDark : t.menu.themeLight}
+      </span>
     </button>
   );
 }

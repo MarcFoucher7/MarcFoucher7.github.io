@@ -19,11 +19,8 @@
         var param = new URLSearchParams(location.search).get('lang');
         var lang = param === 'en' || param === 'fr' ? param : get('lang');
         root.lang = lang === 'en' ? 'en' : 'fr';
-        var theme = get('theme');
-        if (theme !== 'dark' && theme !== 'light') {
-          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-        root.dataset.theme = theme;
+        /* Sombre par défaut : la scène est pensée pour la nuit. */
+        root.dataset.theme = get('theme') === 'light' ? 'light' : 'dark';
       })();
     </script>
   </head>

@@ -1,6 +1,7 @@
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { scrollState } from '../store/scroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,12 +12,15 @@ export function prefersReducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-/** Initialise le smooth scroll synchronisé avec ScrollTrigger (sauf mouvement réduit). */
+/** Smooth scroll piloté par le ticker GSAP (une seule boucle d'animation). */
 export function initLenis(): () => void {
   if (prefersReducedMotion()) return () => undefined;
-  const lenis = new Lenis({ lerp: 0.11 });
+  const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
   const tick = (time: number): void => lenis.raf(time * 1000);
-  lenis.on('scroll', ScrollTrigger.update);
+  lenis.on('scroll', (l: Lenis) => {
+    scrollState.velocity = l.velocity;
+    ScrollTrigger.update();
+  });
   gsap.ticker.add(tick);
   gsap.ticker.lagSmoothing(0);
   instance = lenis;
@@ -27,16 +31,22 @@ export function initLenis(): () => void {
   };
 }
 
+/** Bloque ou relâche le scroll (preloader, menu ouvert). */
+export function lockScroll(locked: boolean): void {
+  document.documentElement.classList.toggle('is-locked', locked);
+  if (!instance) return;
+  if (locked) instance.stop();
+  else instance.start();
+}
+
 /** Fait défiler jusqu'à une ancre, en douceur si Lenis est actif. */
 export function scrollToTarget(target: string | HTMLElement): void {
   const el = typeof target === 'string' ? document.querySelector<HTMLElement>(target) : target;
   if (!el) return;
-  const offset =
-    -parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) * 16 || -64;
   if (instance) {
-    instance.scrollTo(el, { offset, duration: 1.2 });
+    instance.scrollTo(el, { duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 4) });
   } else {
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset });
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY });
   }
   el.focus({ preventScroll: true });
 }

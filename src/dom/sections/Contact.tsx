@@ -1,60 +1,83 @@
+import { useRef } from 'react';
 import { links } from '../../content/profile';
+import { useClock } from '../../hooks/useClock';
+import { useMagnetic } from '../../hooks/useMagnetic';
+import { useFitText } from '../../hooks/useFitText';
+import { useReveal } from '../../hooks/useReveal';
 import { useT } from '../../i18n';
 
-/** Appel à l'action final : mail, CV, réseaux. */
+/** Contact : titre géant, bouton rond magnétique, liens directs. */
 export function Contact() {
   const t = useT();
+  const clock = useClock();
+  const circle = useRef<HTMLAnchorElement>(null);
+  const title = useRef<HTMLHeadingElement>(null);
+  useMagnetic(circle, 0.4);
+  useFitText(title);
+  useReveal(title);
+
   return (
-    <section id="contact" className="section contact" tabIndex={-1} aria-labelledby="contact-title">
-      <div className="section__inner">
-        <div className="column">
-          <div className="contact__head">
-            <img
-              className="contact__photo"
-              src="/images/profil.webp"
-              alt="Marc Foucher"
-              width="88"
-              height="88"
-              loading="lazy"
-            />
-            <h2 className="section__title" id="contact-title">
-              {t.contact.title}
-            </h2>
-          </div>
-          <p className="hero__lead">{t.contact.lead}</p>
-          <a className="contact__mail text-link" href={`mailto:${links.email}`}>
-            {links.email}
-          </a>
-          <div className="btn-row">
-            <a
-              className="btn btn--primary"
-              href={links.cvFr}
-              target="_blank"
-              rel="noopener"
-              hrefLang="fr"
-            >
-              {t.contact.cvFr}
-            </a>
-            <a
-              className="btn btn--ghost"
-              href={links.cvEn}
-              target="_blank"
-              rel="noopener"
-              hrefLang="en"
-            >
-              {t.contact.cvEn}
-            </a>
-          </div>
-          <div className="contact__links">
-            <a className="text-link" href={links.github} target="_blank" rel="noopener">
-              GitHub
-            </a>
-            <a className="text-link" href={links.linkedin} target="_blank" rel="noopener">
-              LinkedIn
-            </a>
-          </div>
-        </div>
+    <section id="contact" className="contact" tabIndex={-1} aria-labelledby="contact-title">
+      <p className="label">{t.contact.kicker}</p>
+      <h2 className="contact__title" id="contact-title" ref={title}>
+        {t.contact.title.map((line) => (
+          <span className="contact__line" key={line}>
+            {line}
+          </span>
+        ))}
+      </h2>
+      <div className="contact__row">
+        <a
+          className="contact__circle"
+          href={`mailto:${links.email}`}
+          ref={circle}
+          data-cursor="Mail"
+        >
+          <span>{t.contact.write}</span>
+        </a>
+        <a className="contact__mail" href={`mailto:${links.email}`}>
+          {links.email}
+        </a>
       </div>
+      <ul className="contact__grid">
+        <li>
+          <a
+            className="pill"
+            href={links.cvFr}
+            target="_blank"
+            rel="noopener"
+            hrefLang="fr"
+            data-cursor="PDF"
+          >
+            {t.contact.cvFr}
+          </a>
+        </li>
+        <li>
+          <a
+            className="pill"
+            href={links.cvEn}
+            target="_blank"
+            rel="noopener"
+            hrefLang="en"
+            data-cursor="PDF"
+          >
+            {t.contact.cvEn}
+          </a>
+        </li>
+        <li>
+          <a className="pill" href={links.github} target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a className="pill" href={links.linkedin} target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+        </li>
+        <li className="contact__time">
+          <span className="label">{t.contact.localTime}</span> Laval <time>{clock}</time>
+        </li>
+      </ul>
     </section>
   );
 }

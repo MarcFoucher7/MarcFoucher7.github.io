@@ -1,20 +1,24 @@
 import { useEffect } from 'react';
 import { initLenis } from './animation/lenis';
-import { useSectionTracking } from './animation/useSectionTracking';
+import { useSectionTracking } from './hooks/useSectionTracking';
 import { useT } from './i18n';
 import { useApp } from './store/app';
-import { Nav } from './dom/ui/Nav';
+import { SceneHost } from './canvas/SceneHost';
+import { Preloader } from './dom/ui/Preloader';
+import { Header } from './dom/ui/Header';
+import { Menu } from './dom/ui/Menu';
+import { Cursor } from './dom/ui/Cursor';
 import { Hero } from './dom/sections/Hero';
-import { Internship } from './dom/sections/Internship';
+import { Manifesto } from './dom/sections/Manifesto';
+import { CaseStudy } from './dom/sections/CaseStudy';
 import { Projects } from './dom/sections/Projects';
 import { Skills } from './dom/sections/Skills';
 import { Background } from './dom/sections/Background';
 import { Beyond } from './dom/sections/Beyond';
 import { Contact } from './dom/sections/Contact';
 import { Footer } from './dom/sections/Footer';
-import { SceneHost } from './canvas/SceneHost';
 
-/** Racine : DOM complet (contenu, accessibilité) + scène 3D chargée en différé derrière. */
+/** Racine : contenu DOM accessible, scène de particules fixe derrière. */
 export function App() {
   const t = useT();
   const lang = useApp((s) => s.lang);
@@ -33,10 +37,13 @@ export function App() {
         {t.skip}
       </a>
       <SceneHost />
-      <Nav />
+      <Preloader />
+      <Header />
+      <Menu />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <Internship />
+        <Manifesto />
+        <CaseStudy />
         <Projects />
         <Skills />
         <Background />
@@ -44,6 +51,7 @@ export function App() {
         <Contact />
       </main>
       <Footer />
+      <Cursor />
     </>
   );
 }

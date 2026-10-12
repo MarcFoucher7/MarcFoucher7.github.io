@@ -1,32 +1,32 @@
+import { useRef } from 'react';
 import { beyond } from '../../content/profile';
+import { useFitText } from '../../hooks/useFitText';
+import { useReveal } from '../../hooks/useReveal';
 import { useL, useT } from '../../i18n';
 
-/** Expériences et passions hors informatique. */
+/** Hors informatique : marchés, batterie, handball. */
 export function Beyond() {
   const t = useT();
   const l = useL();
+  const title = useRef<HTMLHeadingElement>(null);
+  useFitText(title, { max: 110 });
+  useReveal(title);
   return (
-    <section id="beyond" className="section" tabIndex={-1} aria-labelledby="beyond-title">
-      <div className="section__inner">
-        <div className="column">
-          <h2 className="section__title" id="beyond-title">
-            {t.beyond.title}
-          </h2>
-          <ul className="beyond">
-            {beyond.map((entry) => (
-              <li key={entry.title.fr}>
-                <span className="beyond__title">{l(entry.title)}</span>
-                {entry.duration ? (
-                  <span className="beyond__duration">{l(entry.duration)}</span>
-                ) : (
-                  <span />
-                )}
-                {entry.detail ? <p className="beyond__detail">{l(entry.detail)}</p> : null}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+    <section id="beyond" className="beyond" tabIndex={-1} aria-labelledby="beyond-title">
+      <header className="sec-head">
+        <h2 className="sec-head__title sec-head__title--small" id="beyond-title" ref={title}>
+          {t.beyond.title}
+        </h2>
+      </header>
+      <ul className="beyond__list">
+        {beyond.map((entry) => (
+          <li className="beyond__item" key={entry.title.fr}>
+            <h3 className="beyond__title">{l(entry.title)}</h3>
+            {entry.duration ? <p className="label">{l(entry.duration)}</p> : null}
+            {entry.detail ? <p className="beyond__detail">{l(entry.detail)}</p> : null}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

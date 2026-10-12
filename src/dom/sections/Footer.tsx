@@ -8,7 +8,6 @@ export function Footer() {
     <footer className="footer">
       <div className="footer__inner">
         <span>© {new Date().getFullYear()} Marc Foucher</span>
-        <span>{t.footer.hosted}</span>
         <a className="text-link" href="/dossier/">
           {t.footer.dossier}
         </a>

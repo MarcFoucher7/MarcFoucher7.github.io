@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { useT } from '../i18n';
 import { useApp } from '../store/app';
 
 const Experience = lazy(() => import('./Experience'));
@@ -15,75 +14,22 @@ function hasWebGL(): boolean {
 }
 
 /**
- * Hôte de la scène : la 3D n'est chargée qu'après le premier rendu du DOM,
- * quand le navigateur est inactif. Sans WebGL, une illustration statique la remplace.
+ * Hôte de la scène : charge la 3D pendant le preloader.
+ * Sans WebGL, le site reste complet (le preloader se termine sans scène).
  */
 export function SceneHost() {
-  const t = useT();
-  const scene = useApp((s) => s.scene);
   const setScene = useApp((s) => s.setScene);
-  const [load, setLoad] = useState(false);
+  const [webgl, setWebgl] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!hasWebGL()) {
-      setScene('static');
-      return;
-    }
-    // Le contenu passe d'abord : la 3D attend la fin du chargement puis un moment d'inactivité.
-    let idle = 0;
-    let timer = 0;
-    const start = (): void => setLoad(true);
-    const schedule = (): void => {
-      if ('requestIdleCallback' in window) {
-        idle = window.requestIdleCallback(start, { timeout: 2000 });
-      } else {
-        timer = (window as Window).setTimeout(start, 600);
-      }
-    };
-    if (document.readyState === 'complete') schedule();
-    else window.addEventListener('load', schedule, { once: true });
-    return () => {
-      window.removeEventListener('load', schedule);
-      if (idle) window.cancelIdleCallback(idle);
-      if (timer) (window as Window).clearTimeout(timer);
-    };
+    const ok = hasWebGL();
+    setWebgl(ok);
+    if (!ok) setScene('static');
   }, [setScene]);
 
   return (
-    <div className="scene-host" data-ready={scene !== 'pending'}>
-      {scene === 'static' ? (
-        <svg className="scene-fallback" viewBox="0 0 400 160" role="img" aria-label={t.fallback}>
-          <rect
-            x="10"
-            y="30"
-            width="150"
-            height="96"
-            rx="8"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          <rect
-            x="240"
-            y="30"
-            width="150"
-            height="96"
-            rx="8"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          <path
-            d="M160 78 Q200 30 240 78"
-            fill="none"
-            stroke="#2bc4d8"
-            strokeWidth="2"
-            strokeDasharray="4 7"
-          />
-          <rect x="195" y="49" width="10" height="10" fill="#ff6b2c" />
-        </svg>
-      ) : null}
-      {load ? (
+    <div className="scene" aria-hidden="true">
+      {webgl ? (
         <Suspense fallback={null}>
           <Experience />
         </Suspense>

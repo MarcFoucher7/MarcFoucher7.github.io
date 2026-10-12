@@ -1,6 +1,7 @@
+import '@fontsource-variable/syne/wght.css';
 import '@fontsource-variable/schibsted-grotesk/wght.css';
 import '../styles/tokens.css';
-import '../styles/global.css';
+import '../styles/base.css';
 import './dossier.css';
 import { writeStorage } from '../store/storage';
 

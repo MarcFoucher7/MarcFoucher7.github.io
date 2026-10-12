@@ -1,30 +1,75 @@
-import type { Theme } from '../store/app';
+import type { SectionId, Theme } from '../store/app';
 
-/** Couleurs de la scène par thème (alignées sur src/styles/tokens.css). */
-export const PALETTE: Record<
+export const CAMERA = { fov: 35, z: 10 };
+
+/** Nombre de particules générées (le mode « low » n'en affiche qu'une partie). */
+export function particleCount(mobile: boolean): number {
+  return mobile ? 8000 : 16000;
+}
+
+/** Part des particules affichées en qualité réduite. */
+export const LOW_QUALITY_RATIO = 0.55;
+
+/** Index de forme par section : 0 globe, 1 vague, 2 D20, 3 champ, 4 anneau. */
+export const SHAPE_FOR_SECTION: Record<SectionId, number> = {
+  hero: 0,
+  intro: 1,
+  stage: 2,
+  projects: 3,
+  skills: 3,
+  background: 3,
+  beyond: 3,
+  contact: 4,
+};
+
+interface Placement {
+  x: number;
+  y: number;
+  scale: number;
+  opacity: number;
+}
+
+/** Position du nuage par section (unités monde), desktop puis mobile. */
+export const PLACEMENT: Record<SectionId, { desktop: Placement; mobile: Placement }> = {
+  hero: {
+    desktop: { x: 2.1, y: 0.35, scale: 1, opacity: 1 },
+    mobile: { x: 0, y: 1.05, scale: 0.62, opacity: 1 },
+  },
+  intro: {
+    desktop: { x: 0, y: -1.2, scale: 1, opacity: 0.9 },
+    mobile: { x: 0, y: -1.6, scale: 0.6, opacity: 0.7 },
+  },
+  stage: {
+    desktop: { x: 2.5, y: -0.1, scale: 0.95, opacity: 1 },
+    mobile: { x: 0, y: 1.6, scale: 0.5, opacity: 0.45 },
+  },
+  projects: {
+    desktop: { x: 0, y: 0, scale: 1, opacity: 0.55 },
+    mobile: { x: 0, y: 0, scale: 0.7, opacity: 0.4 },
+  },
+  skills: {
+    desktop: { x: 0, y: 0, scale: 1, opacity: 0.55 },
+    mobile: { x: 0, y: 0, scale: 0.7, opacity: 0.4 },
+  },
+  background: {
+    desktop: { x: 0, y: 0, scale: 1, opacity: 0.45 },
+    mobile: { x: 0, y: 0, scale: 0.7, opacity: 0.35 },
+  },
+  beyond: {
+    desktop: { x: 0, y: 0, scale: 1, opacity: 0.45 },
+    mobile: { x: 0, y: 0, scale: 0.7, opacity: 0.35 },
+  },
+  contact: {
+    desktop: { x: 2.3, y: 0.2, scale: 1, opacity: 1 },
+    mobile: { x: 0, y: 1.3, scale: 0.6, opacity: 0.8 },
+  },
+};
+
+/** Couleurs des particules par thème. */
+export const PARTICLE_COLORS: Record<
   Theme,
-  { body: string; screen: string; ink: string; muted: string; edge: string }
+  { base: string; accent: string; size: number; additive: boolean }
 > = {
-  light: { body: '#ffffff', screen: '#e9edf2', ink: '#1c2533', muted: '#6a7687', edge: '#c9d1db' },
-  dark: { body: '#2b374b', screen: '#141c28', ink: '#eef2f6', muted: '#8493a8', edge: '#3d4c66' },
+  dark: { base: '#eeede8', accent: '#ff5b1f', size: 2.1, additive: true },
+  light: { base: '#0c0d10', accent: '#ff5b1f', size: 2.3, additive: false },
 };
-
-export const COLORS = {
-  accent: '#ff6b2c',
-  signal: '#2bc4d8',
-  ack: '#3dbe7a',
-};
-
-/** Dimensions d'un « client » (écran flottant), en unités monde. */
-export const SCREEN = { w: 2.6, h: 1.66, d: 0.07, radius: 0.06, pad: 0.16 };
-
-export const CAMERA = { fov: 30, z: 12 };
-
-/** Typo monospace des écrans. */
-export const CODE = { size: 0.105, line: 0.19, advance: 0.6 };
-
-/** Nombre de paquets dans le flux continu. */
-export const STREAM_COUNT = 44;
-
-/** Durée du trajet d'un paquet d'état de A vers B (secondes). */
-export const PACKET_TRAVEL = 0.75;

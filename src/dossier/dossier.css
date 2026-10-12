@@ -26,6 +26,11 @@ html:lang(en) .lang-fr {
   scroll-margin-top: calc(var(--nav-h) + var(--space-4));
 }
 
+.dossier__main h1,
+.dossier__main h2 {
+  font-family: var(--font-display);
+}
+
 .dossier__main h1 {
   font-size: var(--step-4);
   font-weight: 760;

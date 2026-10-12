@@ -1,37 +1,31 @@
 /*
- * Design tokens — direction « Synchro ».
- * Clair = « papier technique », sombre = « bleu ardoise ».
- * Les *-fill servent aux surfaces et à la 3D, les autres au texte (contraste AA vérifié).
+ * Design tokens — refonte « Awwwards ».
+ * Sombre par défaut (nuit + os), clair = os + encre. Un seul accent : l'orange « paquet ».
  */
 :root {
   color-scheme: light;
 
-  --bg: #f3f5f7;
-  --surface: #ffffff;
-  --surface-sunken: #e9edf2;
-  --ink: #1c2533;
-  --ink-muted: #4c5869;
-  --line: #d3d9e0;
+  --bg: #eeede8;
+  --bg-2: #e2e1da;
+  --fg: #0c0d10;
+  --fg-muted: #57574f;
+  --line: rgba(12, 13, 16, 0.16);
+  --accent: #ff5b1f;
+  --accent-text: #b8400c;
+  --on-accent: #0c0d10;
+  --ok: #1d7a4c;
 
-  --accent: #b93c0b;
-  --accent-fill: #ff6b2c;
-  --on-accent: #1c2533;
-  --signal: #0d6f7d;
-  --signal-fill: #2bc4d8;
-  --ack: #1d7a4c;
-  --ack-fill: #3dbe7a;
-
+  --font-display: 'Syne Variable', 'Syne', system-ui, sans-serif;
   --font-sans: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Échelle typographique (base 17px, ratio ~1,3) */
-  --step--1: 0.875rem;
+  --step--1: 0.8125rem;
   --step-0: 1.0625rem;
   --step-1: 1.3125rem;
-  --step-2: 1.625rem;
-  --step-3: clamp(1.75rem, 1.2rem + 1.6vw, 2.25rem);
-  --step-4: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
-  --step-5: clamp(3rem, 1.2rem + 8vw, 7.5rem);
+  --step-2: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
+  --step-3: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
+  --step-4: clamp(2.75rem, 1rem + 6vw, 6.5rem);
+  --step-5: clamp(3.5rem, 0.5rem + 11vw, 13rem);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -40,34 +34,37 @@
   --space-5: 1.5rem;
   --space-6: 2rem;
   --space-7: 3rem;
-  --space-8: 4.5rem;
-  --space-9: 7rem;
+  --space-8: 5rem;
+  --space-9: 8rem;
 
-  --gutter: clamp(1rem, 0.5rem + 2.5vw, 3rem);
-  --content: 40rem;
-  --nav-h: 4rem;
-
+  --gutter: clamp(1rem, 0.4rem + 2.4vw, 2.5rem);
+  --nav-h: 4.5rem;
   --radius-s: 4px;
   --radius-m: 10px;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+
+  /* Alias utilisés par la page Dossier S3 */
+  --ink: var(--fg);
+  --ink-muted: var(--fg-muted);
+  --surface: var(--bg-2);
+  --surface-sunken: var(--bg-2);
+  --signal: var(--accent-text);
+  --signal-fill: var(--accent);
+  --ack: var(--ok);
+  --ack-fill: #3dbe7a;
+  --accent-fill: var(--accent);
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --bg: #1c2533;
-  --surface: #232e3f;
-  --surface-sunken: #172030;
-  --ink: #eef2f6;
-  --ink-muted: #a9b5c4;
-  --line: #34425a;
-
-  --accent: #ff8a57;
-  --accent-fill: #ff6b2c;
-  --on-accent: #1c2533;
-  --signal: #4fd3e4;
-  --signal-fill: #2bc4d8;
-  --ack: #5fd394;
-  --ack-fill: #3dbe7a;
+  --bg: #0c0d10;
+  --bg-2: #16181d;
+  --fg: #eeede8;
+  --fg-muted: #9b9a93;
+  --line: rgba(238, 237, 232, 0.16);
+  --accent-text: #ff7a45;
+  --ok: #5fd394;
 }

@@ -9,20 +9,20 @@ Priorités, dans l'ordre : **contenu lisible & accès CV > performance (60 fps, 
 
 - **Hébergement : GitHub Pages, site utilisateur** (`https://marcfoucher7.github.io/`, base `/`). Build Vite → déploiement via GitHub Actions (`actions/deploy-pages`), pas de commit du `dist/`.
 - **Bilingue FR / EN** (existant) : toutes les chaînes dans `src/i18n/fr.ts` et `src/i18n/en.ts`, langue persistée, attribut `<html lang>` à jour. Aucun texte en dur dans les composants.
-- **Thème sombre / clair** (existant) : tokens CSS sur `:root`, respect de `prefers-color-scheme`, choix persisté. La scène 3D s'adapte au thème (fond, lumières, couleur d'accent).
-- **PDF à conserver et servir depuis `public/`** : `cv_FOUCHER_Marc.pdf`, `CVMARCen.pdf` (CV EN), `Lettre_Recommandation_ALL4TEC.pdf`, rapport de stage EBIOS RM. Le bouton CV sert le PDF de la langue active.
+- **Thème sombre / clair** (existant) : tokens CSS sur `:root`, sombre par défaut, choix persisté. Les particules s'adaptent au thème (couleur, mode de fusion).
+- **PDF servis depuis `public/docs/`** : `cv-marc-foucher-fr.pdf`, `cv-marc-foucher-en.pdf`, `lettre-recommandation-all4tec.pdf`, `rapport-stage-ebios-rm.pdf`. Le bouton CV sert le PDF de la langue active.
 - **Page Dossier S3** (`dossier.html`) : conservée comme route `/dossier/`, sobre, même design system, sans 3D lourde.
 - Tout le contenu (texte, liens, PDF) doit rester accessible **sans WebGL** et sans JavaScript lourd chargé.
 
-## Direction artistique retenue : « Synchro »
+## Direction artistique retenue : « Awwwards »
 
-Le site raconte le temps réel du stage (Colyseus). Deux écrans 3D, **client A** et **client B**, sont reliés par un flux de paquets. Chaque changement d'état (section visible, langue, thème) part de A sous forme de paquet orange ; B ne l'affiche qu'à l'arrivée et renvoie un accusé de réception. Au rechargement (F5), la ligne d'état rejoue la reconnexion par token.
+Inspirée des Sites of the Day Awwwards (portfolios de développeurs créatifs) : un concept, un moment signature, le reste discipliné.
 
-- **Palette** : clair « papier technique » `#F3F5F7`, sombre « bleu ardoise » `#1C2533`, orange paquet `#FF6B2C` (accent, CTA), cyan signal `#2BC4D8` (requêtes), vert ack `#3DBE7A` (accusés). Variantes texte AA dans `src/styles/tokens.css`.
-- **Typo** : Schibsted Grotesk (titres et texte), JetBrains Mono **uniquement** pour le code affiché dans les écrans 3D.
-- **Motif** : le petit carré « paquet » (puces, indicateur de nav, timeline). Pas d'emojis, pas de surtitres en capitales, pas de cartes identiques à ombre portée.
-- **Mouvement** : un seul moment orchestré au chargement (le nom arrive lettre par lettre) ; le reste du mouvement est porté par la 3D.
-- **Mise en page** : contenu aligné à gauche dans une colonne de 58 % sur grand écran, la droite appartient à la scène. Sur mobile, la scène reste en haut du hero puis s'efface au scroll.
+- **Signature** : un nuage unique de particules (un seul draw call) qui se transforme au scroll : **globe réseau** (hero) → **vague** (manifeste) → **D20** (étude de cas, une face par étape, clin d'œil aux dés 3D du stage) → **champ d'étoiles** (contenu) → **anneau** (contact). Le curseur repousse les particules ; la vitesse de scroll les agite.
+- **Palette** : sombre par défaut, nuit `#0C0D10` et os `#EEEDE8` ; clair = os + encre. Un seul accent : orange `#FF5B1F`.
+- **Typo** : Syne 800 en capitales pour les titres géants (ajustés à la largeur par `useFitText`), Schibsted Grotesk pour le texte, JetBrains Mono pour les petites étiquettes (`.label`).
+- **Codes Awwwards utilisés** : preloader court avec compteur réel (1,2 à 4 s), rideau d'ouverture, nom pleine largeur, header en `mix-blend-mode: difference`, horloge de Laval, menu plein écran, curseur personnalisé, boutons magnétiques, manifeste révélé mot à mot au scroll, section épinglée, aperçu d'image qui suit le curseur, bandeaux défilants liés à la vitesse de scroll, grain.
+- **Garde-fous** : tout le contenu reste dans le DOM et accessible ; mouvement réduit = pas de preloader, pas de smooth scroll, pas de curseur, particules figées ; pas de carrousel horizontal.
 
 ## Contenu source (à préserver, réorganiser, jamais inventer)
 
@@ -42,17 +42,16 @@ TODO connus : URL des dépôts GitHub des 4 projets (`repo` dans `src/content/pr
 
 ## Stack
 
-| Rôle             | Outil                                                                             |
-| ---------------- | --------------------------------------------------------------------------------- |
-| Build            | Vite + React 18 + TypeScript strict                                               |
-| 3D               | `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing` |
-| Animation        | `gsap` + `ScrollTrigger` + `@gsap/react` (`useGSAP`)                              |
-| Scroll           | `lenis` synchronisé avec ScrollTrigger                                            |
-| État             | `zustand` (section active, progression, langue, thème, qualité 3D)                |
-| Shaders          | `vite-plugin-glsl`                                                                |
-| Debug (dev only) | `leva`, `r3f-perf`                                                                |
-| Qualité          | ESLint + Prettier stricts, `tsc --noEmit`                                         |
-| Assets           | Blender → `.glb` optimisé via `@gltf-transform/cli`                               |
+| Rôle      | Outil                                                                  |
+| --------- | ---------------------------------------------------------------------- |
+| Build     | Vite + React 18 + TypeScript strict                                    |
+| 3D        | `three`, `@react-three/fiber` (shader de particules maison, sans drei) |
+| Animation | `gsap` (ScrollTrigger, SplitText) + `@gsap/react` (`useGSAP`)          |
+| Scroll    | `lenis` synchronisé avec ScrollTrigger                                 |
+| État      | `zustand` (section active, progression, langue, thème, qualité 3D)     |
+| Shaders   | `vite-plugin-glsl`                                                     |
+| Qualité   | ESLint + Prettier stricts, `tsc --noEmit`                              |
+| Assets    | Blender → `.glb` optimisé via `@gltf-transform/cli`                    |
 
 Ne pas ajouter d'autre librairie sans justification écrite.
 
@@ -66,26 +65,24 @@ src/
   i18n/              # fr.ts, en.ts, useT() pour l'interface, useL() pour le contenu bilingue
   content/           # données typées : internship.ts, profile.ts (projets, compétences, parcours…)
   canvas/
-    SceneHost.tsx    # détection WebGL, chargement différé, illustration de repli
-    Experience.tsx   # <Canvas> unique, fixe derrière le DOM
-    Scene.tsx        # lumières + lignes de code affichées par A et B
-    Rig.tsx          # disposition des clients selon le scroll, ancrages du flux
-    layout.ts        # calcul pur de la disposition (desktop / mobile, hero / contenu)
-    stream.ts        # état mutable partagé du flux (courbe de Bézier)
-    objects/         # ClientScreen, CodeLines, PacketStream, StatePacket
-    effects/         # Bloom (sombre + grand écran uniquement)
-    config.ts        # couleurs, dimensions, durées
+    SceneHost.tsx    # détection WebGL, chargement de la scène pendant le preloader
+    Experience.tsx   # <Canvas> unique, garde-fou de performance (dpr puis drawRange)
+    Particles.tsx    # nuage de particules : morphing, placement par section, D20, curseur
+    shapes.ts        # génération des 5 formes (globe, vague, D20, champ, anneau)
+    shaders/         # particles.vert.glsl, particles.frag.glsl
+    config.ts        # placements par section, couleurs, nombre de particules
   dom/
-    sections/        # Hero, Internship, Projects, Skills, Background, Beyond, Contact, Footer
-    ui/              # Nav, Toggles, ConnectionStatus
-  animation/         # Lenis + ScrollTrigger, suivi des sections
+    sections/        # Hero, Manifesto, CaseStudy, Projects, Skills, Background, Beyond, Contact, Footer
+    ui/              # Preloader, Header, Menu, Cursor, Marquee, Toggles
+  hooks/             # useFitText, useReveal, useMagnetic, useSectionTracking, useClock
+  animation/         # Lenis piloté par le ticker GSAP, verrouillage du scroll
   store/             # app.ts (zustand), scroll.ts (valeurs mutables 60 fps), storage.ts
-  styles/            # tokens.css, global.css
+  styles/            # tokens.css, base.css (partagé), home.css
   dossier/           # script et styles de la page Dossier S3
 public/
   docs/              # PDF (CV FR/EN, recommandation, rapport)
   images/            # visuels projets en WebP
-  og.png, favicon.svg, robots.txt, sitemap.xml, .nojekyll
+  og.png, favicon.svg, robots.txt, sitemap.xml, dossier.html (redirection), .nojekyll
 ```
 
 - **Un seul `<Canvas>`**, `position: fixed`, monté une fois. Jamais un Canvas par section.
@@ -111,12 +108,12 @@ public/
 
 ## Budgets de performance
 
-- JS initial (gzip) **< 250 ko** hors chunk 3D ; le chunk 3D est chargé en lazy (`React.lazy`) après le premier rendu du hero DOM.
+- JS initial (gzip) **< 250 ko** hors chunk 3D ; le chunk 3D est chargé en lazy (`React.lazy`) pendant le preloader.
 - Assets 3D au premier chargement **< 3 Mo** ; `.glb` en Meshopt/Draco, textures KTX2 ou WebP ≤ 2048 px.
 - Draw calls **< 100** ; triangles **< 300k** desktop, **< 150k** mobile.
 - LCP **< 2,5 s**, CLS **< 0,1** ; Lighthouse ≥ 90 en Performance, Accessibilité, SEO.
-- Fallback sans WebGL : visuel statique + contenu complet.
-- Mesures actuelles (build de prod) : JS initial 107 ko gzip, chunk 3D 284 ko gzip chargé après `load`. Lighthouse sans WebGL : 97 en performance ; avec la 3D en rendu logiciel (headless), le TBT monte à cause du rendu : à mesurer sur un vrai navigateur.
+- Sans WebGL : pas de scène, mais le site reste complet (le preloader se termine sans elle).
+- Mesures actuelles (build de prod) : JS initial 112 ko gzip, chunk 3D 222 ko gzip chargé pendant le preloader. Lighthouse : accessibilité, bonnes pratiques et SEO à 100, CLS ≈ 0 ; performance 87 sans WebGL, plus basse avec la 3D en rendu logiciel (headless) : à mesurer sur un vrai navigateur.
 
 ```bash
 npx @gltf-transform/cli optimize in.glb public/models/out.glb --compress meshopt --texture-compress ktx2
@@ -132,7 +129,6 @@ npx @gltf-transform/cli optimize in.glb public/models/out.glb --compress meshopt
 
 - TypeScript strict, **aucun `any`**, JSDoc sur les fonctions exportées (standard appliqué en stage).
 - Composants fonctionnels, un par fichier, PascalCase ; hooks en `useXxx`.
-- `leva` / `r3f-perf` uniquement sous `import.meta.env.DEV`.
 - Commits conventionnels (`feat:`, `fix:`, `perf:`, `refactor:`), un commit par étape logique.
 
 ## Workflow attendu

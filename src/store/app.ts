@@ -1,30 +1,24 @@
 import { create } from 'zustand';
-import { readStorage, writeStorage } from './storage';
+import { writeStorage } from './storage';
 
 export type Lang = 'fr' | 'en';
 export type Theme = 'light' | 'dark';
 export type SectionId =
   | 'hero'
+  | 'intro'
   | 'stage'
   | 'projects'
   | 'skills'
   | 'background'
   | 'beyond'
   | 'contact';
-export type Connection = 'connecting' | 'reconnecting' | 'connected';
 export type Quality = 'high' | 'low';
-/** pending : scène pas encore chargée ; live : WebGL actif ; static : pas de WebGL, illustration. */
+/** pending : scène en chargement ; live : WebGL actif ; static : pas de WebGL. */
 export type SceneMode = 'pending' | 'live' | 'static';
-
-/** Instantané d'état envoyé du client A au client B. */
-export interface SyncedState {
-  section: SectionId;
-  lang: Lang;
-  theme: Theme;
-}
 
 export const SECTION_IDS: readonly SectionId[] = [
   'hero',
+  'intro',
   'stage',
   'projects',
   'skills',
@@ -33,39 +27,44 @@ export const SECTION_IDS: readonly SectionId[] = [
   'contact',
 ];
 
+/** Nombre d'étapes de l'étude de cas (une face du D20 par étape). */
+export const STAGE_STEPS = 5;
+
 interface AppState {
   lang: Lang;
   theme: Theme;
-  /** Section visible, publiée par le DOM et lue par la scène 3D. */
+  /** Section visible, publiée par le DOM et lue par la scène. */
   section: SectionId;
-  /** État effectivement « reçu » par le client B, après le trajet du paquet. */
-  synced: SyncedState;
-  syncCount: number;
-  connection: Connection;
-  quality: Quality;
+  /** Étape active de l'étude de cas épinglée (0 → STAGE_STEPS - 1). */
+  stageStep: number;
+  /** Le preloader est terminé : l'intro peut jouer. */
+  loaded: boolean;
   scene: SceneMode;
+  quality: Quality;
+  menuOpen: boolean;
   setLang: (lang: Lang) => void;
   toggleTheme: () => void;
   setSection: (section: SectionId) => void;
-  acknowledge: (state: SyncedState) => void;
-  setConnection: (connection: Connection) => void;
-  setQuality: (quality: Quality) => void;
+  setStageStep: (step: number) => void;
+  setLoaded: () => void;
   setScene: (scene: SceneMode) => void;
+  setQuality: (quality: Quality) => void;
+  setMenuOpen: (open: boolean) => void;
 }
 
-/** Valeurs initiales posées par le script inline de index.html (pas de flash au chargement). */
+/** Valeurs posées par le script inline de index.html, avant le premier rendu. */
 const initialLang: Lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
-const initialTheme: Theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+const initialTheme: Theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 
 export const useApp = create<AppState>()((set, get) => ({
   lang: initialLang,
   theme: initialTheme,
   section: 'hero',
-  synced: { section: 'hero', lang: initialLang, theme: initialTheme },
-  syncCount: 0,
-  connection: readStorage('session', 'reconnectionToken') ? 'reconnecting' : 'connecting',
-  quality: 'high',
+  stageStep: 0,
+  loaded: false,
   scene: 'pending',
+  quality: 'high',
+  menuOpen: false,
   setLang: (lang) => {
     document.documentElement.lang = lang;
     writeStorage('local', 'lang', lang);
@@ -80,12 +79,11 @@ export const useApp = create<AppState>()((set, get) => ({
   setSection: (section) => {
     if (get().section !== section) set({ section });
   },
-  acknowledge: (synced) => set((s) => ({ synced, syncCount: s.syncCount + 1 })),
-  setConnection: (connection) => {
-    if (connection === 'connected')
-      writeStorage('session', 'reconnectionToken', String(Date.now()));
-    set({ connection });
+  setStageStep: (stageStep) => {
+    if (get().stageStep !== stageStep) set({ stageStep });
   },
-  setQuality: (quality) => set({ quality }),
+  setLoaded: () => set({ loaded: true }),
   setScene: (scene) => set({ scene }),
+  setQuality: (quality) => set({ quality }),
+  setMenuOpen: (menuOpen) => set({ menuOpen }),
 }));

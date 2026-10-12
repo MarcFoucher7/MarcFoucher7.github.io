@@ -1,41 +1,61 @@
-import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { AdaptiveDpr, PerformanceMonitor } from '@react-three/drei';
+import { useEffect, useRef } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { prefersReducedMotion } from '../animation/lenis';
 import { useApp } from '../store/app';
-import { CAMERA } from './config';
-import { Effects } from './effects/Effects';
-import { Scene } from './Scene';
+import { CAMERA, particleCount } from './config';
+import { Particles } from './Particles';
 
-/** Canvas unique, fixe derrière le DOM. Chargé en différé par <SceneHost>. */
+/** Abaisse la résolution puis le nombre de particules si le framerate s'effondre. */
+function PerformanceGuard() {
+  const setDpr = useThree((s) => s.setDpr);
+  const samples = useRef({ time: 0, frames: 0, strikes: 0 });
+  useFrame((_, delta) => {
+    const s = samples.current;
+    s.time += delta;
+    s.frames += 1;
+    if (s.time < 2) return;
+    const fps = s.frames / s.time;
+    s.time = 0;
+    s.frames = 0;
+    if (fps < 38) {
+      s.strikes += 1;
+      if (s.strikes === 1) setDpr(1);
+      if (s.strikes === 2) useApp.getState().setQuality('low');
+    }
+  });
+  return null;
+}
+
+/** Signale que la première image est rendue (fin du preloader possible). */
+function FirstFrame() {
+  const done = useRef(false);
+  useFrame(() => {
+    if (done.current) return;
+    done.current = true;
+    requestAnimationFrame(() => useApp.getState().setScene('live'));
+  });
+  return null;
+}
+
+/** Canvas unique, fixe derrière le DOM. */
 export default function Experience() {
-  const quality = useApp((s) => s.quality);
-  const setQuality = useApp((s) => s.setQuality);
-  const setScene = useApp((s) => s.setScene);
-  const theme = useApp((s) => s.theme);
   const reduced = prefersReducedMotion();
-  // Bloom uniquement sur grand écran en thème sombre : là où il se voit et où le GPU suit.
-  const bloom = quality === 'high' && theme === 'dark' && window.innerWidth >= 1024;
+  const count = particleCount(window.innerWidth < 900);
+
+  useEffect(() => {
+    if (reduced) useApp.getState().setScene('live');
+  }, [reduced]);
 
   return (
     <Canvas
       aria-hidden="true"
-      dpr={quality === 'high' ? [1, 2] : [1, 1.25]}
-      camera={{ fov: CAMERA.fov, position: [0, 0, CAMERA.z], near: 0.1, far: 50 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      onCreated={() => {
-        requestAnimationFrame(() => setScene('live'));
-      }}
+      dpr={[1, 1.75]}
+      camera={{ fov: CAMERA.fov, position: [0, 0, CAMERA.z], near: 0.1, far: 60 }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
     >
-      <PerformanceMonitor
-        onDecline={() => setQuality('low')}
-        onIncline={() => setQuality('high')}
-      />
-      <AdaptiveDpr pixelated={false} />
-      <Suspense fallback={null}>
-        <Scene reduced={reduced} />
-        {bloom ? <Effects /> : null}
-      </Suspense>
+      <Particles count={count} reduced={reduced} />
+      <FirstFrame />
+      <PerformanceGuard />
     </Canvas>
   );
 }

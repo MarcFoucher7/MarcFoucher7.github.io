@@ -4,8 +4,8 @@ import { SECTION_IDS, useApp } from '../store/app';
 import { scrollState } from '../store/scroll';
 
 /**
- * Publie la section visible dans le store et la progression du hero dans scrollState.
- * À monter une seule fois, après le rendu des sections.
+ * Publie la section visible dans le store et suit le pointeur.
+ * Monté dans <App>, donc après les ScrollTrigger épinglés des sections (ordre correct).
  */
 export function useSectionTracking(): void {
   useEffect(() => {
@@ -20,23 +20,18 @@ export function useSectionTracking(): void {
         },
       }),
     );
-    triggers.push(
-      ScrollTrigger.create({
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        onUpdate: (self) => {
-          scrollState.hero = self.progress;
-          document.documentElement.style.setProperty('--hero-progress', self.progress.toFixed(3));
-        },
-      }),
-    );
 
     const onPointer = (event: PointerEvent): void => {
-      scrollState.pointerX = (event.clientX / window.innerWidth) * 2 - 1;
-      scrollState.pointerY = (event.clientY / window.innerHeight) * 2 - 1;
+      scrollState.x = event.clientX;
+      scrollState.y = event.clientY;
+      scrollState.nx = (event.clientX / window.innerWidth) * 2 - 1;
+      scrollState.ny = -((event.clientY / window.innerHeight) * 2 - 1);
+      scrollState.movedAt = performance.now();
     };
     window.addEventListener('pointermove', onPointer, { passive: true });
+
+    const refresh = (): void => ScrollTrigger.refresh();
+    void document.fonts.ready.then(refresh);
 
     return () => {
       triggers.forEach((t) => t.kill());
