@@ -14,6 +14,16 @@ Priorités, dans l'ordre : **contenu lisible & accès CV > performance (60 fps, 
 - **Page Dossier S3** (`dossier.html`) : conservée comme route `/dossier/`, sobre, même design system, sans 3D lourde.
 - Tout le contenu (texte, liens, PDF) doit rester accessible **sans WebGL** et sans JavaScript lourd chargé.
 
+## Direction artistique retenue : « Synchro »
+
+Le site raconte le temps réel du stage (Colyseus). Deux écrans 3D, **client A** et **client B**, sont reliés par un flux de paquets. Chaque changement d'état (section visible, langue, thème) part de A sous forme de paquet orange ; B ne l'affiche qu'à l'arrivée et renvoie un accusé de réception. Au rechargement (F5), la ligne d'état rejoue la reconnexion par token.
+
+- **Palette** : clair « papier technique » `#F3F5F7`, sombre « bleu ardoise » `#1C2533`, orange paquet `#FF6B2C` (accent, CTA), cyan signal `#2BC4D8` (requêtes), vert ack `#3DBE7A` (accusés). Variantes texte AA dans `src/styles/tokens.css`.
+- **Typo** : Schibsted Grotesk (titres et texte), JetBrains Mono **uniquement** pour le code affiché dans les écrans 3D.
+- **Motif** : le petit carré « paquet » (puces, indicateur de nav, timeline). Pas d'emojis, pas de surtitres en capitales, pas de cartes identiques à ombre portée.
+- **Mouvement** : un seul moment orchestré au chargement (le nom arrive lettre par lettre) ; le reste du mouvement est porté par la 3D.
+- **Mise en page** : contenu aligné à gauche dans une colonne de 58 % sur grand écran, la droite appartient à la scène. Sur mobile, la scène reste en haut du hero puis s'efface au scroll.
+
 ## Contenu source (à préserver, réorganiser, jamais inventer)
 
 Le contenu vient de l'ancien `index.html`. Ne pas inventer de compétences, chiffres, dates ou projets.
@@ -26,49 +36,56 @@ Le contenu vient de l'ancien `index.html`. Ne pas inventer de compétences, chif
 - **Autres** : 5 ans de vente sur les marchés (relation client, autonomie), batterie (9 ans), handball.
 - **Contact** : foucher.marc7@gmail.com · github.com/MarcFoucher7 · linkedin.com/in/marc-foucher-64397a38a/
 
-Bugs de l'ancien site à **ne pas** reproduire : liens `TON_GITHUB` / `TON_LINKEDIN`, footer « © 2025 », `_config.yml` titré « Octocat's homepage ».
+Bugs de l'ancien site corrigés pendant la refonte (à ne pas réintroduire) : liens `TON_GITHUB` / `TON_LINKEDIN`, footer « © 2025 », `_config.yml` titré « Octocat's homepage ».
+
+TODO connus : URL des dépôts GitHub des 4 projets (`repo` dans `src/content/profile.ts`).
 
 ## Stack
 
-| Rôle | Outil |
-|---|---|
-| Build | Vite + React 18 + TypeScript strict |
-| 3D | `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing` |
-| Animation | `gsap` + `ScrollTrigger` + `@gsap/react` (`useGSAP`) |
-| Scroll | `lenis` synchronisé avec ScrollTrigger |
-| État | `zustand` (section active, progression, langue, thème, qualité 3D) |
-| Shaders | `vite-plugin-glsl` |
-| Debug (dev only) | `leva`, `r3f-perf` |
-| Qualité | ESLint + Prettier stricts, `tsc --noEmit` |
-| Assets | Blender → `.glb` optimisé via `@gltf-transform/cli` |
+| Rôle             | Outil                                                                             |
+| ---------------- | --------------------------------------------------------------------------------- |
+| Build            | Vite + React 18 + TypeScript strict                                               |
+| 3D               | `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing` |
+| Animation        | `gsap` + `ScrollTrigger` + `@gsap/react` (`useGSAP`)                              |
+| Scroll           | `lenis` synchronisé avec ScrollTrigger                                            |
+| État             | `zustand` (section active, progression, langue, thème, qualité 3D)                |
+| Shaders          | `vite-plugin-glsl`                                                                |
+| Debug (dev only) | `leva`, `r3f-perf`                                                                |
+| Qualité          | ESLint + Prettier stricts, `tsc --noEmit`                                         |
+| Assets           | Blender → `.glb` optimisé via `@gltf-transform/cli`                               |
 
 Ne pas ajouter d'autre librairie sans justification écrite.
 
 ## Architecture
 
 ```
+index.html           # page principale (script inline : langue + thème avant le rendu)
+dossier/index.html   # page Dossier S3, HTML statique (spans .lang-fr / .lang-en)
 src/
   main.tsx, App.tsx
-  i18n/            # fr.ts, en.ts, hook useT()
-  content/         # données typées : projects.ts, skills.ts, timeline.ts (bilingues)
+  i18n/              # fr.ts, en.ts, useT() pour l'interface, useL() pour le contenu bilingue
+  content/           # données typées : internship.ts, profile.ts (projets, compétences, parcours…)
   canvas/
-    Experience.tsx # <Canvas> unique, fixed, derrière le DOM
-    Scene.tsx      # composition, lumières, environnement
-    objects/       # un composant par objet 3D
-    effects/       # postprocessing
-    shaders/       # *.vert.glsl, *.frag.glsl + matériau TS
-    config.ts      # couleurs, positions caméra, durées
+    SceneHost.tsx    # détection WebGL, chargement différé, illustration de repli
+    Experience.tsx   # <Canvas> unique, fixe derrière le DOM
+    Scene.tsx        # lumières + lignes de code affichées par A et B
+    Rig.tsx          # disposition des clients selon le scroll, ancrages du flux
+    layout.ts        # calcul pur de la disposition (desktop / mobile, hero / contenu)
+    rig.ts           # état mutable partagé du flux (courbe de Bézier)
+    objects/         # ClientScreen, CodeLines, PacketStream, StatePacket
+    effects/         # Bloom (sombre + grand écran uniquement)
+    config.ts        # couleurs, dimensions, durées
   dom/
-    sections/      # Hero, Skills, Internship, Projects, Background, About, Contact
-    ui/            # Nav, ThemeToggle, LangToggle, Loader, Cursor, Button
-  animation/       # setup Lenis, timelines GSAP par section
-  store/           # zustand
-  styles/          # tokens.css, global.css
+    sections/        # Hero, Internship, Projects, Skills, Background, Beyond, Contact, Footer
+    ui/              # Nav, Toggles, ConnectionStatus
+  animation/         # Lenis + ScrollTrigger, suivi des sections
+  store/             # app.ts (zustand), scroll.ts (valeurs mutables 60 fps), storage.ts
+  styles/            # tokens.css, global.css
+  dossier/           # script et styles de la page Dossier S3
 public/
-  docs/            # PDF
-  models/          # .glb compressés uniquement
-  textures/        # .ktx2 / .webp
-  images/          # visuels projets (webp)
+  docs/              # PDF (CV FR/EN, recommandation, rapport)
+  images/            # visuels projets en WebP
+  og.png, favicon.svg, robots.txt, sitemap.xml, .nojekyll
 ```
 
 - **Un seul `<Canvas>`**, `position: fixed`, monté une fois. Jamais un Canvas par section.
@@ -99,6 +116,7 @@ public/
 - Draw calls **< 100** ; triangles **< 300k** desktop, **< 150k** mobile.
 - LCP **< 2,5 s**, CLS **< 0,1** ; Lighthouse ≥ 90 en Performance, Accessibilité, SEO.
 - Fallback sans WebGL : visuel statique + contenu complet.
+- Mesures actuelles (build de prod) : JS initial 107 ko gzip, chunk 3D 284 ko gzip chargé après `load`. Lighthouse sans WebGL : 97 en performance ; avec la 3D en rendu logiciel (headless), le TBT monte à cause du rendu : à mesurer sur un vrai navigateur.
 
 ```bash
 npx @gltf-transform/cli optimize in.glb public/models/out.glb --compress meshopt --texture-compress ktx2
