@@ -1177,3 +1177,52 @@ main,
 .manifesto__text .word {
   text-indent: 0;
 }
+
+.hero__hit {
+  margin-top: var(--space-3);
+}
+
+.hdr__sound {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hdr__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 0.8rem;
+}
+
+.hdr__bars i {
+  width: 2px;
+  height: 30%;
+  background: currentColor;
+  transition: height 0.3s;
+}
+
+.hdr__bars[data-on='true'] i {
+  animation: eq 0.9s ease-in-out infinite alternate;
+}
+
+.hdr__bars[data-on='true'] i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.hdr__bars[data-on='true'] i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+.hdr__bars[data-on='true'] i:nth-child(4) {
+  animation-delay: -0.15s;
+}
+
+@keyframes eq {
+  from {
+    height: 20%;
+  }
+  to {
+    height: 100%;
+  }
+}

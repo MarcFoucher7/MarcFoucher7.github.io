@@ -46,6 +46,7 @@ export function Hero() {
       <div className="hero__top">
         <p className="hero__kicker hero__fade">{t.hero.kicker}</p>
         <p className="hero__intro hero__fade">{t.hero.intro}</p>
+        <p className="hero__hit hero__fade label">{t.hero.hit}</p>
       </div>
       <div className="hero__bottom">
         <div className="hero__meta">

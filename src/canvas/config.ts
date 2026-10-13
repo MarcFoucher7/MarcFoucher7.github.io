@@ -10,7 +10,7 @@ export function particleCount(mobile: boolean): number {
 /** Part des particules affichées en qualité réduite. */
 export const LOW_QUALITY_RATIO = 0.55;
 
-/** Index de forme par section : 0 globe, 1 vague, 2 D20, 3 champ, 4 anneau. */
+/** Index de forme par section : 0 cymbale, 1 vague, 2 D20, 3 champ, 4 charleston. */
 export const SHAPE_FOR_SECTION: Record<SectionId, number> = {
   hero: 0,
   intro: 1,
@@ -60,7 +60,7 @@ export const PLACEMENT: Record<SectionId, { desktop: Placement; mobile: Placemen
     mobile: { x: 0, y: 0, scale: 0.7, opacity: 0.35 },
   },
   contact: {
-    desktop: { x: 2.3, y: 0.2, scale: 1, opacity: 1 },
+    desktop: { x: 2.4, y: 0.75, scale: 0.95, opacity: 0.9 },
     mobile: { x: 0, y: 1.3, scale: 0.6, opacity: 0.8 },
   },
 };

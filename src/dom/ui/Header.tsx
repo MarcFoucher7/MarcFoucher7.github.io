@@ -1,4 +1,5 @@
-import { type MouseEvent } from 'react';
+import { useState, type MouseEvent } from 'react';
+import { isSoundOn, setSoundOn } from '../../animation/cymbal';
 import { scrollToTarget } from '../../animation/lenis';
 import { useClock } from '../../hooks/useClock';
 import { useT } from '../../i18n';
@@ -11,6 +12,7 @@ export function Header() {
   const clock = useClock();
   const menuOpen = useApp((s) => s.menuOpen);
   const setMenuOpen = useApp((s) => s.setMenuOpen);
+  const [sound, setSound] = useState(isSoundOn);
 
   const home = (event: MouseEvent<HTMLAnchorElement>): void => {
     event.preventDefault();
@@ -31,6 +33,24 @@ export function Header() {
         {t.header.available}
       </p>
       <div className="hdr__actions">
+        <button
+          type="button"
+          className="hdr__btn hdr__sound"
+          aria-pressed={sound}
+          aria-label={sound ? t.header.soundOn : t.header.soundOff}
+          onClick={() => {
+            setSoundOn(!sound);
+            setSound(!sound);
+          }}
+        >
+          <span className="hdr__bars" aria-hidden="true" data-on={sound}>
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          {t.header.sound}
+        </button>
         <LangToggle className="hdr__btn" />
         <button
           type="button"

@@ -18,7 +18,7 @@ Priorités, dans l'ordre : **contenu lisible & accès CV > performance (60 fps, 
 
 Inspirée des Sites of the Day Awwwards (portfolios de développeurs créatifs) : un concept, un moment signature, le reste discipliné.
 
-- **Signature** : un nuage unique de particules (un seul draw call) qui se transforme au scroll : **globe réseau** (hero) → **vague** (manifeste) → **D20** (étude de cas, une face par étape, clin d'œil aux dés 3D du stage) → **champ d'étoiles** (contenu) → **anneau** (contact). Le curseur repousse les particules ; la vitesse de scroll les agite.
+- **Signature** : un nuage unique de particules (un seul draw call) qui se transforme au scroll : **cymbale ride** (hero, Marc est batteur depuis 9 ans) → **vague** (manifeste) → **D20** (étude de cas, une face par étape, clin d'œil aux dés 3D du stage) → **champ d'étoiles** (contenu) → **charleston** (contact). Un clic dans le hero ou le contact « frappe » la cymbale : onde radiale dans le shader + oscillation amortie ; chaque changement de section frappe aussi. Son de cymbale synthétisé (WebAudio, coupé par défaut, bouton « Son »). Le curseur repousse les particules ; la vitesse de scroll les agite.
 - **Palette** : sombre par défaut, nuit `#0C0D10` et os `#EEEDE8` ; clair = os + encre. Un seul accent : orange `#FF5B1F`.
 - **Typo** : Syne 800 en capitales pour les titres géants (ajustés à la largeur par `useFitText`), Schibsted Grotesk pour le texte, JetBrains Mono pour les petites étiquettes (`.label`).
 - **Codes Awwwards utilisés** : preloader court avec compteur réel (1,2 à 4 s), rideau d'ouverture, nom pleine largeur, header en `mix-blend-mode: difference`, horloge de Laval, menu plein écran, curseur personnalisé, boutons magnétiques, manifeste révélé mot à mot au scroll, section épinglée, aperçu d'image qui suit le curseur, bandeaux défilants liés à la vitesse de scroll, grain.
@@ -68,14 +68,14 @@ src/
     SceneHost.tsx    # détection WebGL, chargement de la scène pendant le preloader
     Experience.tsx   # <Canvas> unique, garde-fou de performance (dpr puis drawRange)
     Particles.tsx    # nuage de particules : morphing, placement par section, D20, curseur
-    shapes.ts        # génération des 5 formes (globe, vague, D20, champ, anneau)
+    shapes.ts        # génération des 5 formes (cymbale, vague, D20, champ, charleston)
     shaders/         # particles.vert.glsl, particles.frag.glsl
     config.ts        # placements par section, couleurs, nombre de particules
   dom/
     sections/        # Hero, Manifesto, CaseStudy, Projects, Skills, Background, Beyond, Contact, Footer
     ui/              # Preloader, Header, Menu, Cursor, Marquee, Toggles
-  hooks/             # useFitText, useReveal, useMagnetic, useSectionTracking, useClock
-  animation/         # Lenis piloté par le ticker GSAP, verrouillage du scroll
+  hooks/             # useFitText, useReveal, useMagnetic, useSectionTracking, useClock, useStrikes
+  animation/         # Lenis piloté par le ticker GSAP, verrouillage du scroll, cymbal.ts (frappe + son)
   store/             # app.ts (zustand), scroll.ts (valeurs mutables 60 fps), storage.ts
   styles/            # tokens.css, base.css (partagé), home.css
   dossier/           # script et styles de la page Dossier S3

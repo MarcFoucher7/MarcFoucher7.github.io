@@ -19,6 +19,9 @@ export const en: Dictionary = {
     available: 'Open to a 2026-27 work-study',
     menu: 'Menu',
     close: 'Close',
+    sound: 'Sound',
+    soundOn: 'Mute the cymbal',
+    soundOff: 'Turn on the cymbal sound',
   },
   menu: {
     label: 'Main navigation',
@@ -47,6 +50,7 @@ export const en: Dictionary = {
       'Computer Science student at IUT Laval, France. Looking for a work-study position for 2026-2027.',
     tags: 'React, TypeScript, real time, 3D',
     scroll: 'Scroll',
+    hit: 'Drummer for 9 years. Click to strike the cymbal.',
     cv: 'Resume',
   },
   manifesto:

@@ -40,22 +40,6 @@ FACES.forEach((face) => {
   }
 });
 
-/** Arcs de connexion du globe : paires de nœuds aléatoires mais stables. */
-const ARCS: [Vector3, Vector3][] = (() => {
-  const r = rng(7);
-  const node = (): Vector3 => {
-    const lat = Math.asin(r() * 2 - 1);
-    const lon = r() * Math.PI * 2;
-    return new Vector3(Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon));
-  };
-  return Array.from({ length: 26 }, () => {
-    const a = node();
-    let b = node();
-    while (a.angleTo(b) > 1.7 || a.angleTo(b) < 0.5) b = node();
-    return [a, b] as [Vector3, Vector3];
-  });
-})();
-
 /** Orientations du D20 : chaque étape amène une face différente vers la caméra. */
 export const D20_FACE_ORIENTATIONS: Quaternion[] = [0, 7, 13, 4, 17, 10].map((index) => {
   const face = FACES[index % FACES.length] as Vector3[];
@@ -66,6 +50,27 @@ export const D20_FACE_ORIENTATIONS: Quaternion[] = [0, 7, 13, 4, 17, 10].map((in
     .normalize();
   return new Quaternion().setFromUnitVectors(normal, new Vector3(0, 0, 1));
 });
+
+/** Un point sur une cymbale de rayon R (plan XZ, Y vers le haut). */
+function cymbal(r: () => number, u: number, R: number, out: Vector3): Vector3 {
+  const bell = R * 0.24;
+  const a = r() * Math.PI * 2;
+  const pick = r();
+  let rad: number;
+  let y: number;
+  if (pick < 0.16) {
+    // Cloche
+    rad = bell * Math.sqrt(r());
+    y = 0.2 + 0.26 * Math.sqrt(Math.max(0, 1 - (rad / bell) ** 2));
+  } else {
+    // Sillons : rayon quantifié en anneaux fins, profil légèrement conique.
+    rad =
+      pick < 0.9 ? bell + (R - bell) * Math.sqrt(u * 0.5 + r() * 0.5) : R * (0.985 + r() * 0.015);
+    rad = Math.round(rad / 0.1) * 0.1 + (r() - 0.5) * 0.006;
+    y = 0.2 * (1 - (rad - bell) / (R - bell));
+  }
+  return out.set(Math.cos(a) * rad, y, Math.sin(a) * rad);
+}
 
 /** Génère les 5 formes du nuage et les attributs aléatoires par particule. */
 export function buildParticles(count: number): ParticleData {
@@ -84,7 +89,6 @@ export function buildParticles(count: number): ParticleData {
   ];
   const cols = Math.round(Math.sqrt(count * 2.4));
   const rows = Math.ceil(count / cols);
-  const golden = Math.PI * (3 - Math.sqrt(5));
 
   // Ordre mélangé : n'importe quel préfixe du tableau couvre toute la forme,
   // ce qui permet de réduire le nombre de particules affichées (drawRange) sans trou.
@@ -98,37 +102,9 @@ export function buildParticles(count: number): ParticleData {
     const i3 = i * 3;
     const k = order[i] as number;
 
-    // 0. Globe réseau : parallèles et méridiens en pointillés, arcs de connexion
-    //    au-dessus de la surface (les « paquets » entre deux nœuds), un peu de poussière.
-    const R0 = 1.9;
-    const g = r();
-    if (g < 0.42) {
-      if (r() < 0.5) {
-        const lat = ((Math.floor(r() * 11) + 1) / 12 - 0.5) * Math.PI;
-        const lon = r() * Math.PI * 2;
-        tmp.set(Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon));
-      } else {
-        const lon = (Math.floor(r() * 12) / 12) * Math.PI * 2;
-        const lat = (r() - 0.5) * Math.PI;
-        tmp.set(Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon));
-      }
-      tmp.multiplyScalar(R0);
-    } else if (g < 0.8) {
-      const [a, b] = ARCS[Math.floor(r() * ARCS.length)] as [Vector3, Vector3];
-      const u = r();
-      tmp
-        .copy(a)
-        .lerp(b, u)
-        .normalize()
-        .multiplyScalar(R0 * (1 + 0.22 * Math.sin(Math.PI * u)));
-    } else {
-      const y = 1 - (k / (count - 1)) * 2;
-      const rad = Math.sqrt(1 - y * y);
-      const theta = golden * k;
-      tmp
-        .set(Math.cos(theta) * rad, y, Math.sin(theta) * rad)
-        .multiplyScalar(R0 * (0.98 + r() * 0.04));
-    }
+    // 0. Cymbale (ride) dans le plan XZ : sillons de tournage concentriques,
+    //    cloche bombée au centre, bord marqué. Le relief des sillons vibre dans le shader.
+    cymbal(r, k / count, 2.3, tmp);
     globe[i3] = tmp.x;
     globe[i3 + 1] = tmp.y;
     globe[i3 + 2] = tmp.z;
@@ -172,18 +148,12 @@ export function buildParticles(count: number): ParticleData {
     field[i3 + 1] = (r() - 0.5) * 12;
     field[i3 + 2] = -7 + r() * 9;
 
-    // 4. Anneau incliné (tore fin).
-    const a = r() * Math.PI * 2;
-    const b = r() * Math.PI * 2;
-    const tube = 0.38 * Math.sqrt(r());
-    const R = 2.2 + tube * Math.cos(b);
-    const rx = Math.cos(a) * R;
-    const ry = tube * Math.sin(b);
-    const rz = Math.sin(a) * R;
-    const tilt = 1.15;
-    ring[i3] = rx;
-    ring[i3 + 1] = ry * Math.cos(tilt) - rz * Math.sin(tilt);
-    ring[i3 + 2] = ry * Math.sin(tilt) + rz * Math.cos(tilt);
+    // 4. Charleston (hi-hat) : deux cymbales face à face.
+    const top = r() < 0.5;
+    cymbal(r, r(), 1.95, tmp);
+    ring[i3] = tmp.x;
+    ring[i3 + 1] = top ? 0.32 - tmp.y : tmp.y - 0.32;
+    ring[i3 + 2] = tmp.z;
 
     random[i * 4] = r() * 2 - 1;
     random[i * 4 + 1] = r() * 2 - 1;

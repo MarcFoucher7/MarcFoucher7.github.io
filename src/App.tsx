@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { initLenis } from './animation/lenis';
 import { useSectionTracking } from './hooks/useSectionTracking';
+import { useStrikes } from './hooks/useStrikes';
 import { useT } from './i18n';
 import { useApp } from './store/app';
 import { SceneHost } from './canvas/SceneHost';
@@ -25,6 +26,7 @@ export function App() {
 
   useEffect(() => initLenis(), []);
   useSectionTracking();
+  useStrikes();
 
   useEffect(() => {
     document.title = t.meta.title;

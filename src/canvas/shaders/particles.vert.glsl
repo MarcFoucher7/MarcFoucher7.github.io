@@ -7,6 +7,8 @@ uniform float uSize;
 uniform float uPixelRatio;
 uniform float uAgitation;
 uniform float uMotion;
+uniform float uHitAge;
+uniform float uHitAmp;
 
 attribute vec3 aS1;
 attribute vec3 aS2;
@@ -42,6 +44,13 @@ void main() {
   // Relief animé de la vague (forme 1).
   float waveW = 1.0 - clamp(abs(t - 1.0), 0.0, 1.0);
   p.y += waveW * uMotion * (sin(p.x * 0.8 + uTime * 0.9) * 0.32 + cos(p.z * 1.4 + uTime * 0.6) * 0.2);
+
+  // Cymbale frappée (formes 0 et 4) : onde radiale qui part de la cloche et s'amortit.
+  float cymW = max(1.0 - clamp(t, 0.0, 1.0), clamp(t - 3.0, 0.0, 1.0));
+  float rad = length(p.xz);
+  float front = smoothstep(uHitAge * 5.0 + 0.4, uHitAge * 5.0 - 0.2, rad);
+  float ring = sin(rad * 4.5 - uHitAge * 16.0) * exp(-uHitAge * 1.4) * front;
+  p.y += cymW * uMotion * (uHitAmp * ring * (0.35 + rad * 0.22) + sin(rad * 3.0 + uTime * 1.2) * 0.015);
 
   // Respiration + agitation liée à la vitesse de scroll.
   float n = sin(uTime * 0.7 + aRandom.w * 6.2831);

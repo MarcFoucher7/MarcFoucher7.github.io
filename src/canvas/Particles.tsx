@@ -14,6 +14,7 @@ import {
 } from 'three';
 import { useApp } from '../store/app';
 import { scrollState } from '../store/scroll';
+import { hitState } from '../animation/cymbal';
 import { LOW_QUALITY_RATIO, PARTICLE_COLORS, PLACEMENT, SHAPE_FOR_SECTION } from './config';
 import { buildParticles, D20_FACE_ORIENTATIONS } from './shapes';
 import vertexShader from './shaders/particles.vert.glsl';
@@ -68,6 +69,8 @@ export function Particles({ count, reduced }: ParticlesProps) {
       uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
       uAgitation: { value: 0 },
       uMotion: { value: reduced ? 0 : 1 },
+      uHitAge: { value: 99 },
+      uHitAmp: { value: 0 },
       uColor: { value: new Color() },
       uAccent: { value: new Color() },
       uOpacity: { value: 0 },
@@ -150,6 +153,14 @@ export function Particles({ count, reduced }: ParticlesProps) {
     p.position.y = MathUtils.lerp(p.position.y, place.y * (height / 6.3), k(2.2));
     p.scale.setScalar(MathUtils.lerp(p.scale.x, place.scale * fit, k(2.2)));
 
+    // Frappe de cymbale : onde dans le shader + oscillation amortie de l'inclinaison.
+    hitState.age += dt;
+    uniforms.uHitAge.value = hitState.age;
+    uniforms.uHitAmp.value = hitState.amp;
+    const wobble = reduced
+      ? 0
+      : hitState.amp * 0.14 * Math.sin(hitState.age * 10) * Math.exp(-hitState.age * 2.4);
+
     // Rotation : le D20 présente une face par étape, sinon rotation lente.
     if (section === 'stage') {
       const face = D20_FACE_ORIENTATIONS[stageStep] ?? D20_FACE_ORIENTATIONS[0];
@@ -158,7 +169,16 @@ export function Particles({ count, reduced }: ParticlesProps) {
     } else {
       tmp.spin += reduced ? 0 : dt * 0.09;
       tmp.qSpin.setFromAxisAngle(Y_AXIS, tmp.spin);
-      tmp.qTilt.setFromAxisAngle(X_AXIS, section === 'intro' ? 0.25 : 0.12 + scrollState.ny * 0.08);
+      // Les cymbales sont vues de trois quarts, comme depuis le tabouret du batteur.
+      const tilt =
+        section === 'hero'
+          ? 0.62
+          : section === 'contact'
+            ? 0.42
+            : section === 'intro'
+              ? 0.25
+              : 0.12;
+      tmp.qTilt.setFromAxisAngle(X_AXIS, tilt + wobble + scrollState.ny * 0.08);
       tmp.q.copy(tmp.qTilt).multiply(tmp.qSpin);
     }
     p.quaternion.slerp(tmp.q, k(section === 'stage' ? 3.2 : 1.5));

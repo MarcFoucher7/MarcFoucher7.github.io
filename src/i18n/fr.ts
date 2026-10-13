@@ -17,6 +17,9 @@ export const fr = {
     available: 'Ouvert à une alternance 2026-27',
     menu: 'Menu',
     close: 'Fermer',
+    sound: 'Son',
+    soundOn: 'Couper le son de la cymbale',
+    soundOff: 'Activer le son de la cymbale',
   },
   menu: {
     label: 'Navigation principale',
@@ -45,6 +48,7 @@ export const fr = {
       "Étudiant en BUT Informatique à l'IUT de Laval. Je cherche une alternance pour 2026-2027.",
     tags: 'React, TypeScript, temps réel, 3D',
     scroll: 'Défiler',
+    hit: 'Batteur depuis 9 ans. Cliquez pour frapper la cymbale.',
     cv: 'CV',
   },
   manifesto:
