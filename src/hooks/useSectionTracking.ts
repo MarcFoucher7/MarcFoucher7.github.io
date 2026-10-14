@@ -16,7 +16,10 @@ export function useSectionTracking(): void {
         start: 'top 55%',
         end: 'bottom 55%',
         onToggle: (self) => {
-          if (self.isActive) setSection(id);
+          if (!self.isActive) return;
+          setSection(id);
+          // Le voile de lisibilité (CSS) dépend de la section affichée.
+          document.documentElement.dataset.section = id;
         },
       }),
     );

@@ -17,7 +17,8 @@ export function Preloader() {
   const count = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion()) {
+    const skip = new URLSearchParams(window.location.search).has('nointro');
+    if (prefersReducedMotion() || skip) {
       useApp.getState().setLoaded();
       setGone(true);
       return;
@@ -27,6 +28,7 @@ export function Preloader() {
     let fonts = false;
     let value = 0;
     let exiting = false;
+    let last = started;
     void document.fonts.ready.then(() => {
       fonts = true;
     });
@@ -59,7 +61,11 @@ export function Preloader() {
       if (fonts && sceneReady) goal = 100;
       if (elapsed > 4000) goal = 100;
       goal = Math.min(goal, (elapsed / 1200) * 100);
-      value += (goal - value) * 0.12;
+      // Lissage basé sur le temps : identique à 30 ou 144 images par seconde.
+      const now = performance.now();
+      const dt = Math.min(0.25, (now - last) / 1000);
+      last = now;
+      value += (goal - value) * (1 - Math.exp(-dt * 7));
       if (count.current) count.current.textContent = pad(value);
       if (value > 99.4) {
         if (count.current) count.current.textContent = '100';

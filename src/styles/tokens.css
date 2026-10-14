@@ -1,31 +1,34 @@
 /*
- * Design tokens — refonte « Awwwards ».
- * Sombre par défaut (nuit + os), clair = os + encre. Un seul accent : l'orange « paquet ».
+ * Design tokens — « Studio MF ».
+ * Nuit : bordeaux profond, crème, lumière tungstène ambrée, sarcelle pour les repères techniques.
+ * Jour : papier chaud, encre lie-de-vin.
  */
 :root {
   color-scheme: light;
 
-  --bg: #eeede8;
-  --bg-2: #e2e1da;
-  --fg: #0c0d10;
-  --fg-muted: #57574f;
-  --line: rgba(12, 13, 16, 0.16);
-  --accent: #ff5b1f;
-  --accent-text: #b8400c;
-  --on-accent: #0c0d10;
+  --bg: #f1e5d5;
+  --bg-2: #e6d3bd;
+  --fg: #26090e;
+  --fg-muted: #6b4842;
+  --line: rgba(38, 9, 14, 0.18);
+  --accent: #ff9a2e;
+  --accent-text: #a5470b;
+  --on-accent: #26090e;
+  --teal: #1d7f74;
+  --rec: #d6202e;
   --ok: #1d7a4c;
 
-  --font-display: 'Syne Variable', 'Syne', system-ui, sans-serif;
+  --font-display: 'Big Shoulders Display Variable', 'Big Shoulders Display', Impact, sans-serif;
   --font-sans: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --step--1: 0.8125rem;
   --step-0: 1.0625rem;
   --step-1: 1.3125rem;
-  --step-2: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
-  --step-3: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
-  --step-4: clamp(2.75rem, 1rem + 6vw, 6.5rem);
-  --step-5: clamp(3.5rem, 0.5rem + 11vw, 13rem);
+  --step-2: clamp(1.6rem, 1.2rem + 1.3vw, 2.25rem);
+  --step-3: clamp(2.2rem, 1.3rem + 3vw, 3.75rem);
+  --step-4: clamp(3rem, 1rem + 7vw, 8rem);
+  --step-5: clamp(4rem, 0.5rem + 13vw, 16rem);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -50,7 +53,7 @@
   --ink-muted: var(--fg-muted);
   --surface: var(--bg-2);
   --surface-sunken: var(--bg-2);
-  --signal: var(--accent-text);
+  --signal: var(--teal);
   --signal-fill: var(--accent);
   --ack: var(--ok);
   --ack-fill: #3dbe7a;
@@ -60,11 +63,14 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --bg: #0c0d10;
-  --bg-2: #16181d;
-  --fg: #eeede8;
-  --fg-muted: #9b9a93;
-  --line: rgba(238, 237, 232, 0.16);
-  --accent-text: #ff7a45;
+  --bg: #150a0d;
+  --bg-2: #241216;
+  --fg: #f6ead9;
+  --fg-muted: #c4ac9c;
+  --line: rgba(246, 234, 217, 0.16);
+  --accent-text: #ffb35c;
+  --on-accent: #1a0b0c;
+  --teal: #5fd8c9;
+  --rec: #ff3d4a;
   --ok: #5fd394;
 }

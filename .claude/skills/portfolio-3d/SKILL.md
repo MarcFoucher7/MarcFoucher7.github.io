@@ -13,7 +13,7 @@ Cette skill complète `CLAUDE.md` (règles du projet). Elle décrit **comment** 
 2. **DOM complet** : créer `src/dom/sections/<Section>.tsx`, sémantique (`<section id aria-labelledby>`), responsive, lisible sans 3D.
 3. **Mise en scène** : écrire en 3-5 lignes l'intention (ce que fait la caméra, l'objet, le texte, sur quelle portion du scroll). La soumettre si c'est un choix artistique nouveau.
 4. **Câblage état** : la section publie sa progression dans le store (`ScrollTrigger` `onUpdate` → `useStore.setState({ progress })` hors `useFrame`, ou mieux une ref partagée).
-5. **3D** : composant dans `src/canvas/objects/`, qui lit la progression via ref et anime dans `useFrame` avec `damp`.
+5. **3D** : composant dans `src/canvas/kit/` (batterie) ou `src/canvas/studio/` (décor), qui lit la progression via ref (`kitState`, `scrollState`) et anime dans `useFrame` avec `damp`. Un nouveau plan de caméra se déclare dans `SHOTS` (`src/canvas/CameraRig.tsx`).
 6. **Polish** : micro-interactions (hover, curseur magnétique), transitions de texte (split lignes/mots), postprocessing léger.
 7. **Quality gate** (section 6).
 
@@ -49,14 +49,19 @@ export const scrollState = { progress: 0, section: 0 };
 
 ```tsx
 // Dans une section DOM
-useGSAP(() => {
-  ScrollTrigger.create({
-    trigger: ref.current,
-    start: 'top top',
-    end: 'bottom top',
-    onUpdate: (self) => { scrollState.progress = self.progress; },
-  });
-}, { scope: ref });
+useGSAP(
+  () => {
+    ScrollTrigger.create({
+      trigger: ref.current,
+      start: 'top top',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        scrollState.progress = self.progress;
+      },
+    });
+  },
+  { scope: ref },
+);
 ```
 
 ```tsx
@@ -157,7 +162,16 @@ jobs:
 
 Dans les réglages du dépôt : Pages → Source → **GitHub Actions**. Supprimer `_config.yml` (Jekyll inutile) et ajouter `public/.nojekyll`.
 
-## 6. Quality gate (avant de dire « fini »)
+## 6. Pièges déjà rencontrés sur ce projet
+
+- **Mouvement réduit** : la remise à zéro CSS doit mettre `transition-duration: 0s`, pas `0.01ms`. Avec une durée non nulle, chaque changement de style devient une transition et les mesures synchrones (ScrollTrigger, `useFitText`) lisent l'ancienne valeur : sections épinglées superposées, titre qui déborde.
+- **ScrollTrigger** : `onUpdate` est appelé après `onToggle`. Garder `if (!self.isActive) return;` en tête d'`onUpdate` quand `onToggle` remet un état à zéro.
+- **SplitText `mask: 'lines'`** : le masque (`.split-mask-line-mask`) coupe les accents des capitales si l'interlignage est serré ; il garde un padding haut compensé par une marge négative.
+- **Événements 3D à travers le DOM** : Canvas avec `eventSource` sur `#root` et `eventPrefix="client"`, `main { pointer-events: none }`, puis `pointer-events: auto` sur `[data-ui]`, liens et boutons. Une interaction 3D vérifie qu'elle ne part pas d'un élément d'interface.
+- **Captures headless** : SwiftShader rend à 1-5 fps ; utiliser `?debug&nointro&snap` (caméra sans transition) et des attentes longues, ou `?hq` pour figer la qualité haute.
+- **Casse des fichiers** : macOS ne distingue pas `rig.ts` de `Rig.tsx`, Linux (CI) si. Ne jamais avoir deux fichiers qui ne diffèrent que par la casse.
+
+## 7. Quality gate (avant de dire « fini »)
 
 - [ ] `npm run lint`, `npx tsc --noEmit`, `npm run build` passent sans warning.
 - [ ] FR et EN complets, aucun texte en dur.

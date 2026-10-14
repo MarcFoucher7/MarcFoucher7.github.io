@@ -1,18 +1,18 @@
-import { useState, type MouseEvent } from 'react';
-import { isSoundOn, setSoundOn } from '../../animation/cymbal';
+import { type MouseEvent } from 'react';
 import { scrollToTarget } from '../../animation/lenis';
 import { useClock } from '../../hooks/useClock';
 import { useT } from '../../i18n';
 import { useApp } from '../../store/app';
-import { LangToggle } from './Toggles';
+import { GrooveButton } from './GrooveButton';
+import { LangToggle, SoundToggle } from './Toggles';
+import { VuMeter } from './VuMeter';
 
-/** En-tête fixe en mix-blend « difference » : lisible sur la scène comme sur le texte. */
+/** En-tête fixe : logo, horloge du studio, groove/métronome, son, langue, menu. */
 export function Header() {
   const t = useT();
   const clock = useClock();
   const menuOpen = useApp((s) => s.menuOpen);
   const setMenuOpen = useApp((s) => s.setMenuOpen);
-  const [sound, setSound] = useState(isSoundOn);
 
   const home = (event: MouseEvent<HTMLAnchorElement>): void => {
     event.preventDefault();
@@ -21,36 +21,19 @@ export function Header() {
   };
 
   return (
-    <header className="hdr">
+    <header className="hdr" data-menu={menuOpen}>
       <a className="hdr__logo" href="#hero" onClick={home}>
         MF<span className="visually-hidden">, {t.header.home}</span>
       </a>
       <p className="hdr__clock">
+        <span className="hdr__rec" aria-hidden="true" />
         {t.header.place} <time>{clock}</time>
       </p>
-      <p className="hdr__status">
-        <span className="hdr__dot" aria-hidden="true" />
-        {t.header.available}
-      </p>
+      <GrooveButton className="hdr__groove" />
       <div className="hdr__actions">
-        <button
-          type="button"
-          className="hdr__btn hdr__sound"
-          aria-pressed={sound}
-          aria-label={sound ? t.header.soundOn : t.header.soundOff}
-          onClick={() => {
-            setSoundOn(!sound);
-            setSound(!sound);
-          }}
-        >
-          <span className="hdr__bars" aria-hidden="true" data-on={sound}>
-            <i />
-            <i />
-            <i />
-            <i />
-          </span>
-          {t.header.sound}
-        </button>
+        <SoundToggle className="hdr__btn hdr__sound">
+          <VuMeter />
+        </SoundToggle>
         <LangToggle className="hdr__btn" />
         <button
           type="button"

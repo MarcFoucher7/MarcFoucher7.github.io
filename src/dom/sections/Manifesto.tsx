@@ -8,7 +8,7 @@ import { useApp } from '../../store/app';
 
 gsap.registerPlugin(SplitText);
 
-/** Manifeste : chaque mot s'allume au rythme du scroll, au-dessus de la vague de particules. */
+/** Manifeste : les mots s'allument au scroll pendant que la caméra s'approche de la grosse caisse. */
 export function Manifesto() {
   const t = useT();
   const lang = useApp((s) => s.lang);
@@ -42,7 +42,7 @@ export function Manifesto() {
 
   return (
     <section id="intro" className="manifesto" tabIndex={-1} aria-label={t.hero.kicker}>
-      <p className="manifesto__text" ref={ref}>
+      <p className="manifesto__text" ref={ref} data-ui>
         {t.manifesto}
       </p>
     </section>

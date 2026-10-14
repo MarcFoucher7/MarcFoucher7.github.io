@@ -74,7 +74,7 @@ export function CaseStudy() {
 
   return (
     <section id="stage" className="case" ref={root} tabIndex={-1} aria-labelledby="case-title">
-      <header className="case__head">
+      <header className="case__head" data-ui>
         <p className="label">{t.stage.label}</p>
         <h2 className="case__title" id="case-title" ref={title}>
           {t.stage.title}
@@ -100,7 +100,7 @@ export function CaseStudy() {
       </header>
 
       <div className="case__pin" ref={pin}>
-        <div className="case__panel">
+        <div className="case__panel" data-ui>
           <p className="case__counter" aria-hidden="true">
             <span className="case__counter-current">{current}</span>
             <span className="case__counter-total">/{total}</span>
@@ -133,7 +133,7 @@ export function CaseStudy() {
         </div>
       </div>
 
-      <div className="case__outro">
+      <div className="case__outro" data-ui>
         <p className="label">{t.stage.result}</p>
         <p className="case__result">{l(internship.result)}</p>
         <div className="case__actions">

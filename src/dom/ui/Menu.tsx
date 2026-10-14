@@ -5,7 +5,7 @@ import { useT } from '../../i18n';
 import { useApp } from '../../store/app';
 import { LangToggle, ThemeToggle } from './Toggles';
 
-const ITEMS = ['stage', 'projects', 'skills', 'background', 'contact'] as const;
+const ITEMS = ['kit', 'stage', 'projects', 'background', 'contact'] as const;
 
 /** Menu plein écran : grands liens, réglages et contacts. */
 export function Menu() {

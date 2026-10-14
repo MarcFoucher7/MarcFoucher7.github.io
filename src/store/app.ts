@@ -1,14 +1,14 @@
 import { create } from 'zustand';
-import { writeStorage } from './storage';
+import { readStorage, writeStorage } from './storage';
 
 export type Lang = 'fr' | 'en';
 export type Theme = 'light' | 'dark';
 export type SectionId =
   | 'hero'
   | 'intro'
+  | 'kit'
   | 'stage'
   | 'projects'
-  | 'skills'
   | 'background'
   | 'beyond'
   | 'contact';
@@ -19,9 +19,9 @@ export type SceneMode = 'pending' | 'live' | 'static';
 export const SECTION_IDS: readonly SectionId[] = [
   'hero',
   'intro',
+  'kit',
   'stage',
   'projects',
-  'skills',
   'background',
   'beyond',
   'contact',
@@ -42,6 +42,10 @@ interface AppState {
   scene: SceneMode;
   quality: Quality;
   menuOpen: boolean;
+  /** Le groove automatique est en cours. */
+  grooving: boolean;
+  /** Son coupé par l'utilisateur. */
+  muted: boolean;
   setLang: (lang: Lang) => void;
   toggleTheme: () => void;
   setSection: (section: SectionId) => void;
@@ -50,6 +54,8 @@ interface AppState {
   setScene: (scene: SceneMode) => void;
   setQuality: (quality: Quality) => void;
   setMenuOpen: (open: boolean) => void;
+  setGrooving: (grooving: boolean) => void;
+  setMuted: (muted: boolean) => void;
 }
 
 /** Valeurs posées par le script inline de index.html, avant le premier rendu. */
@@ -65,6 +71,8 @@ export const useApp = create<AppState>()((set, get) => ({
   scene: 'pending',
   quality: 'high',
   menuOpen: false,
+  grooving: false,
+  muted: readStorage('local', 'muted') === 'true',
   setLang: (lang) => {
     document.documentElement.lang = lang;
     writeStorage('local', 'lang', lang);
@@ -86,4 +94,9 @@ export const useApp = create<AppState>()((set, get) => ({
   setScene: (scene) => set({ scene }),
   setQuality: (quality) => set({ quality }),
   setMenuOpen: (menuOpen) => set({ menuOpen }),
+  setGrooving: (grooving) => set({ grooving }),
+  setMuted: (muted) => {
+    writeStorage('local', 'muted', String(muted));
+    set({ muted });
+  },
 }));

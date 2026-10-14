@@ -15,7 +15,7 @@ export function LangToggle({ className = '' }: { className?: string }) {
   );
 }
 
-/** Bascule thème sombre / clair. */
+/** Bascule session de nuit / de jour (thème sombre / clair et éclairage du studio). */
 export function ThemeToggle({ className = '' }: { className?: string }) {
   const t = useT();
   const theme = useApp((s) => s.theme);
@@ -31,6 +31,32 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       <span aria-hidden="true">
         {t.menu.theme} : {dark ? t.menu.themeDark : t.menu.themeLight}
       </span>
+    </button>
+  );
+}
+
+/** Coupe ou rétablit le son. */
+export function SoundToggle({
+  className = '',
+  children,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  const t = useT();
+  const muted = useApp((s) => s.muted);
+  const setMuted = useApp((s) => s.setMuted);
+  return (
+    <button
+      type="button"
+      className={className}
+      aria-pressed={!muted}
+      aria-label={muted ? t.header.soundOff : t.header.soundOn}
+      onClick={() => setMuted(!muted)}
+      data-muted={muted}
+    >
+      {children}
+      <span aria-hidden="true">{t.header.sound}</span>
     </button>
   );
 }

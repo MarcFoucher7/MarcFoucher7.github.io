@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { hit } from '../../audio/hits';
 import { links } from '../../content/profile';
 import { useClock } from '../../hooks/useClock';
 import { useMagnetic } from '../../hooks/useMagnetic';
@@ -18,20 +19,23 @@ export function Contact() {
 
   return (
     <section id="contact" className="contact" tabIndex={-1} aria-labelledby="contact-title">
-      <p className="label">{t.contact.kicker}</p>
-      <h2 className="contact__title" id="contact-title" ref={title}>
+      <p className="label" data-ui>
+        {t.contact.kicker}
+      </p>
+      <h2 className="contact__title" id="contact-title" ref={title} data-ui>
         {t.contact.title.map((line) => (
           <span className="contact__line" key={line}>
             {line}
           </span>
         ))}
       </h2>
-      <div className="contact__row">
+      <div className="contact__row" data-ui>
         <a
           className="contact__circle"
           href={`mailto:${links.email}`}
           ref={circle}
           data-cursor="Mail"
+          onPointerDown={() => hit('crash', 1)}
         >
           <span>{t.contact.write}</span>
         </a>
@@ -39,7 +43,7 @@ export function Contact() {
           {links.email}
         </a>
       </div>
-      <ul className="contact__grid">
+      <ul className="contact__grid" data-ui>
         <li>
           <a
             className="pill"

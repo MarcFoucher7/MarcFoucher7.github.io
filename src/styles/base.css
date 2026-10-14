@@ -8,6 +8,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Place de la barre de défilement réservée : bloquer le scroll (preloader, menu) ne décale rien. */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -211,13 +213,19 @@ section:focus {
   margin-left: auto;
 }
 
+/*
+ * Mouvement réduit. Les transitions passent à 0 s (et non 0,01 ms) : avec une durée non nulle,
+ * toute modification de style devient une transition et les mesures synchrones de ScrollTrigger
+ * lisent l'ancienne valeur (l'espace réservé par la section épinglée était ignoré).
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }

@@ -1,11 +1,10 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import glsl from 'vite-plugin-glsl';
 
 export default defineConfig({
   base: '/',
-  plugins: [react(), glsl({ compress: true })],
+  plugins: [react()],
   build: {
     target: 'es2020',
     // Le chunk 3D (three + R3F) est chargé en différé : on accepte sa taille.

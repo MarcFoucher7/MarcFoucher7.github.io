@@ -1,4 +1,4 @@
-import '@fontsource-variable/syne/wght.css';
+import '@fontsource-variable/big-shoulders-display/wght';
 import '@fontsource-variable/schibsted-grotesk/wght.css';
 import '../styles/tokens.css';
 import '../styles/base.css';
