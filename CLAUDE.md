@@ -32,16 +32,16 @@ Un studio d'enregistrement de nuit, filmé comme un clip. Marc est batteur depui
 Ne pas inventer de compétences, chiffres, dates ou projets.
 
 - **Hero** : Marc Foucher, étudiant BUT Informatique (IUT Laval), recherche d'alternance 2026-2027. CTA : CV, lettre de recommandation, contact, GitHub, LinkedIn.
-- **Compétences** (une pièce de la batterie par groupe, `src/content/kit.ts`) : grosse caisse = fondations Java (POO, MVC, JavaFX, design patterns) · caisse claire = web fullstack · toms = temps réel et 3D (Colyseus, R3F, Three.js, Blender) · tom basse = bases de données (SQL, MySQL, SQL Server, MCD/MLD) · charleston = outils et méthode (Git, Linux, Docker, Figma, ESLint, Scrum/Tuleap) · crash = savoir-être · ride = langues et certifications.
+- **Compétences** (groupes dans `skills`, une pièce de la batterie par groupe dans `src/content/kit.ts`, 7 groupes au maximum) : grosse caisse = langages (Java POO/MVC/JavaFX, design patterns, Python/FastAPI, Kotlin, C#, Swift) · caisse claire = web fullstack (TypeScript, React, Node.js, PHP/Symfony, HTML/CSS, Figma) · toms = 3D, XR et temps réel (R3F, Three.js, Blender, Unity, XR Interaction Toolkit, Colyseus) · tom basse = données (MySQL, SQL Server, SQLite, Redis, Elasticsearch/Kibana, MCD/MLD) · charleston = tests, qualité et méthode (pytest, Robot Framework, ESLint/Prettier, hooks Git, Conventional Commits, Lighthouse CI, Scrum) · crash = DevOps (Git, GitLab CI/CD, Docker Compose, Docker-in-Docker, Linux, Tailscale) · ride = langues, certifications et savoir-être.
 - **Stage ALL4TEC (avril-juillet 2026)** — projet phare : adaptation en ligne du serious game EBIOS RM. React, TypeScript, Colyseus (WebSockets), R3F, Blender, GitLab, Tuleap. Points clés : synchro temps réel, reconnexion après F5, interfaces `IState` partagées, dés 3D D4/D20 animés par quaternions (slerp), 330+ alertes ESLint corrigées, MVP validé. Démo : https://ebios-lejeu.all4tec.net/
-- **Projets** : Morpion (Java MVC + IA), Timeline Game (JS MVC), Robot de trading (Python, API, BDD), UX/UI Figma (sites recyclage, primeur). Images dans `public/images/`.
-- **Parcours** : IUT Laval (en cours), TOEIC Listening B2, Projet Voltaire niveau Affaires, certification MOOC Club EBIOS, Bac général mention Bien (maths-physique).
+- **Projets** (`featured` = grande ligne, les autres en liste compacte) : TrachVR (SAÉ BUT3, Unity/XR, Meta Quest), AI Coding Assistant (R5.05, Python/FastAPI/pytest), Plateforme DevOps auto-hébergée (R5.09, GitLab CE, Docker-in-Docker, Tailscale), Automatisation RPA du recrutement (R5.07, Robot Framework) ; puis Aviatech (perso, Processing + Arduino), MyDressing (perso, Swift/SwiftUI), Perudo (BUT2, Kotlin), Timeline Game (Java, JavaFX, Maven). Visuels 16:10 en WebP dans `public/images/` (aussi affichés sur l'écran du studio) ; les visuels provisoires sont des illustrations marquées `TODO(Marc)`.
+- **Parcours** : Bac général mention Bien (maths-physique), stage ALL4TEC (avril-juillet 2026), BUT3 Informatique à l'IUT de Laval en 2026-2027 (parcours « Réalisation d'applications : conception, développement, validation »), alternance 2026-2027 recherchée. Certifications : TOEIC Listening B2, Projet Voltaire niveau Affaires, MOOC EBIOS RM (Club EBIOS).
 - **Autres** : 5 ans de vente sur les marchés (relation client, autonomie), batterie (9 ans), handball.
 - **Contact** : foucher.marc7@gmail.com · github.com/MarcFoucher7 · linkedin.com/in/marc-foucher-64397a38a/
 
 Bugs de l'ancien site corrigés (à ne pas réintroduire) : liens `TON_GITHUB` / `TON_LINKEDIN`, footer « © 2025 », `_config.yml` titré « Octocat's homepage ».
 
-TODO connus : URL des dépôts GitHub des 4 projets (`repo` dans `src/content/profile.ts`).
+TODO connus : dépôts publics des projets (`repo` dans `src/content/profile.ts`, aucun public pour l'instant), captures pour remplacer les visuels provisoires, statut de l'alternance.
 
 ## Stack
 

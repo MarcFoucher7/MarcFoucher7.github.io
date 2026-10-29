@@ -10,9 +10,19 @@ import { useL, useT } from '../../i18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/** On garde l'index d'origine : l'écran du studio affiche `projects[index]`. */
+const entries = projects.map((project, index) => ({ project, index }));
+const featured = entries.filter((e) => e.project.featured);
+const others = entries.filter((e) => !e.project.featured);
+
+/** Affiche le projet sur l'écran du studio. */
+const show = (index: number) => (): void => {
+  kitState.activeProject = index;
+};
+
 /**
- * Projets en grandes lignes : le projet survolé (ou celui au centre de l'écran)
- * s'affiche sur l'écran du studio en 3D.
+ * Projets : les projets mis en avant en grandes lignes, les autres en liste compacte.
+ * Le projet survolé (ou celui au centre de l'écran) s'affiche sur l'écran du studio en 3D.
  */
 export function Projects() {
   const t = useT();
@@ -24,13 +34,14 @@ export function Projects() {
 
   useGSAP(
     () => {
-      gsap.utils.toArray<HTMLElement>('.prow').forEach((row, i) => {
+      gsap.utils.toArray<HTMLElement>('[data-project]').forEach((el) => {
+        const index = Number(el.dataset.project);
         ScrollTrigger.create({
-          trigger: row,
+          trigger: el,
           start: 'top 55%',
           end: 'bottom 55%',
           onToggle: (self) => {
-            if (self.isActive) kitState.activeProject = i;
+            if (self.isActive) kitState.activeProject = index;
           },
         });
       });
@@ -58,16 +69,13 @@ export function Projects() {
         {t.projects.lead}
       </p>
       <ul className="plist" data-ui>
-        {projects.map((project, i) => (
+        {featured.map(({ project, index }) => (
           <li
             className="prow"
             key={project.image}
-            onPointerEnter={() => {
-              kitState.activeProject = i;
-            }}
-            onFocus={() => {
-              kitState.activeProject = i;
-            }}
+            data-project={index}
+            onPointerEnter={show(index)}
+            onFocus={show(index)}
             tabIndex={0}
           >
             <h3 className="prow__title">{l(project.title)}</h3>
@@ -92,6 +100,32 @@ export function Projects() {
           </li>
         ))}
       </ul>
+      {others.length > 0 ? (
+        <div className="pmore" data-ui>
+          <h3 className="pmore__title label">{t.projects.more}</h3>
+          <ul className="pmore__list">
+            {others.map(({ project, index }) => (
+              <li
+                className="pmini"
+                key={project.image}
+                data-project={index}
+                onPointerEnter={show(index)}
+                onFocus={show(index)}
+                tabIndex={0}
+              >
+                <h4 className="pmini__title">{l(project.title)}</h4>
+                <p className="prow__tech">{project.tech}</p>
+                <p className="pmini__desc">{l(project.description)}</p>
+                {project.repo ? (
+                  <a className="text-link" href={project.repo} target="_blank" rel="noopener">
+                    GitHub
+                  </a>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </section>
   );
 }

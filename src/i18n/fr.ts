@@ -70,7 +70,6 @@ export const fr = {
     label: 'Compétences',
     title: 'Ma stack, en vue éclatée',
     lead: 'Chaque pièce de la batterie porte une partie de ce que je sais faire. Défilez pour la démonter, cliquez pour l’entendre.',
-    progress: (n: number, total: number) => `Pièce ${n} sur ${total}`,
     listen: 'Écouter',
   },
   stage: {
@@ -95,6 +94,7 @@ export const fr = {
     title: 'Projets',
     lead: 'Survolez un projet : il passe sur l’écran du studio.',
     repoTodo: 'Code source bientôt en ligne',
+    more: 'Autres projets',
   },
   background: {
     title: 'Parcours',

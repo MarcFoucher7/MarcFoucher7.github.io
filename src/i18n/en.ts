@@ -72,7 +72,6 @@ export const en: Dictionary = {
     label: 'Skills',
     title: 'My stack, exploded',
     lead: 'Each piece of the kit carries part of what I can do. Scroll to take it apart, click to hear it.',
-    progress: (n: number, total: number) => `Piece ${n} of ${total}`,
     listen: 'Listen',
   },
   stage: {
@@ -97,6 +96,7 @@ export const en: Dictionary = {
     title: 'Projects',
     lead: 'Hover a project: it shows up on the studio screen.',
     repoTodo: 'Source code coming soon',
+    more: 'More projects',
   },
   background: {
     title: 'Background',

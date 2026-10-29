@@ -39,8 +39,14 @@ export function lockScroll(locked: boolean): void {
   else instance.start();
 }
 
-/** Fait défiler jusqu'à une ancre, en douceur si Lenis est actif. */
-export function scrollToTarget(target: string | HTMLElement): void {
+/** Fait défiler jusqu'à une ancre ou une position (px), en douceur si Lenis est actif. */
+export function scrollToTarget(target: string | HTMLElement | number): void {
+  if (typeof target === 'number') {
+    if (instance)
+      instance.scrollTo(target, { duration: 1.2, easing: (t) => 1 - Math.pow(1 - t, 4) });
+    else window.scrollTo({ top: target });
+    return;
+  }
   const el = typeof target === 'string' ? document.querySelector<HTMLElement>(target) : target;
   if (!el) return;
   if (instance) {
